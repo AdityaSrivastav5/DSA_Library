@@ -1,0 +1,181 @@
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  padding: 10px 20px;
+  height: 80px;
+  margin: 30px 40px 2rem;
+  border-radius: 30px;
+}
+.logo a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 25px;
+  position: relative;
+}
+
+.nav-item a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 22px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+
+.nav-item .icon {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.nav-item.dropdown .icon {
+  transform: rotate(0deg); /* Initially pointing up */
+}
+
+.nav-item.dropdown:hover .icon {
+  transform: rotate(180deg); /* Rotate 180 degrees on hover */
+}
+
+.nav-item:hover a {
+  color: #f39c12; /* Optional: Change color on hover */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+
+.dropdown-content li a {
+  color: #FFFFFF;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content li a:hover {
+  background-color: #333333;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.search-bar input[type="text"] {
+  border: none;
+  border-radius: 29px;
+  padding: 8px 210px 8px 15px;
+  background-color: #FFFFFF;
+  color: #000000;
+  margin-right: 5px;
+  outline: none;
+  font-size: 16px;
+}
+.search-bar input[type="text"]::placeholder {
+  color: #808080;
+  text-align: left;
+}
+
+.icons a {
+  color: #FFFFFF;
+  margin-left: 20px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    height: auto;
+    margin: 20px;
+    border-radius: 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .search-bar input[type="text"] {
+    width: 100%;
+  }
+
+  .icons {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo a {
+    font-size: 20px;
+  }
+
+  .nav-item a {
+    font-size: 18px;
+  }
+
+  .icons a {
+    font-size: 16px;
+    margin-left: 15px;
+  }
+
+  .navbar {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 15px;
+  }
+
+  .nav-links {
+    align-items: flex-start;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
