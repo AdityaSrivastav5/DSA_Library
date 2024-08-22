@@ -7,7 +7,7 @@ const app = express();
 
  app.use(express.json());
 
-app.use('/api',appRoute)
+app.post('user/signup',appRoute)
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
