@@ -1,15 +1,43 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
-const PORT = process.env.PORT || 5003;
-const signup = require("./controller/user");
+const bodyParser = require("body-parser");
+const cron = require("node-cron");
+const nodemailer = require('nodemailer');
+const { db } = require('./db/db.js');
+const userRoutes = require('./routes/route.js');
+
 const app = express();
+const PORT = process.env.PORT || 5003;
 
-app.use(express.json());
+// Middleware
+app.use(bodyParser.json());
 
-app.post("user/signup", signup);
-app.post("/send");
+// Database connection
+db();
 
+// Nodemailer setup
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
+// Routes
+app.use("/user", userRoutes);
+
+// Cron job to send reminders daily at 10:32 AM
+cron.schedule('32 10 * * *', async () => {
+    try {
+        const { sendReminders } = require('./controller/user.js');
+        await sendReminders(transporter);
+    } catch (error) {
+        console.error('Error sending reminders:', error);
+    }
+});
+
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
