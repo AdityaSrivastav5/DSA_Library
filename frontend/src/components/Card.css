@@ -23,29 +23,30 @@ body {
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Ensure 3 cards in a row */
-  gap: 20px;
-  width: 100%; /* Set container width to 100% */
+  grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+  gap: 50px; /* Increase the gap between cards */
+  width: 100%; /* Ensure the container takes up full width */
   max-width: 1200px; /* Limit the maximum width of the container */
   margin: 0 auto; /* Center the container */
-  padding: 0 20px; /* Add some padding to ensure spacing on smaller screens */
-  margin-bottom: 2rem;
+  padding: 0 20px; /* Padding to ensure spacing on smaller screens */
+  margin-bottom: 4rem; /* Increase the bottom margin of the entire section */
+  margin-top: 4rem;
 }
 
 .card {
-  background-color: black;
   color: var(--clr-neutral-100);
-  width: 300px;
-  height: 200px;
-  border-radius: 0.5rem;
+  background-color: black;
+  background-size: cover;
+  width: 350px; /* Increase the width of each card */
+  height: 230px; /* Adjust height proportionally */
+  border-radius: 2rem;
   overflow: hidden;
-  position: relative;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 500ms ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
+
 
 .card:hover,
 .card:focus-within {

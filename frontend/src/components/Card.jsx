@@ -19,9 +19,9 @@ const Card = () => {
             <p className="card-body">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, culpa.
             </p>
-            <a href="#" className="button">
+            {/* <a href="#" className="button">
               Learn More
-            </a>
+            </a> */}
           </div>
         </div>
       ))}
