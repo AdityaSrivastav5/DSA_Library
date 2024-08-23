@@ -40,9 +40,9 @@ body {
 .nav-item a {
   color: #FFFFFF;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 23px;
   display: inline-block;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease; /* Add transition for transform */
 }
 
 
@@ -62,6 +62,7 @@ body {
 
 .nav-item:hover a {
   color: #f39c12; /* Optional: Change color on hover */
+  transform: scale(1.1) translateX(10px); /* Scale up and move outward */
 }
 
 .dropdown-content {
@@ -94,13 +95,13 @@ body {
 
 .search-bar input[type="text"] {
   border: none;
-  border-radius: 29px;
-  padding: 8px 210px 8px 15px;
-  background-color: #FFFFFF;
-  color: #000000;
-  margin-right: 5px;
-  outline: none;
-  font-size: 16px;
+    border-radius: 15px;
+    padding: 12px 290px 12px 25px;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-right: 5px;
+    outline: none;
+    font-size: 17px;
 }
 .search-bar input[type="text"]::placeholder {
   color: #808080;
@@ -110,7 +111,8 @@ body {
 .icons a {
   color: #FFFFFF;
   margin-left: 20px;
-  font-size: 18px;
+  font-size: 28px;
+  padding: 0.3em;
   text-decoration: none;
 }
 
@@ -146,6 +148,7 @@ body {
 
   .icons {
     margin-top: 10px;
+    
     width: 100%;
     justify-content: flex-end;
   }

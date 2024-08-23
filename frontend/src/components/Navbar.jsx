@@ -10,7 +10,7 @@ const Navbar = () => {
                 <li className="nav-item">
                     <a href="#">
                         Home
-                        <i className="fas fa-chevron-up icon"></i> {/* Font Awesome icon */}
+                        <i className=""></i> {/* Font Awesome icon */}
                     </a>
                 </li>
                 <li className="nav-item dropdown">
@@ -27,7 +27,7 @@ const Navbar = () => {
                 <li className="nav-item">
                     <a href="#">
                         Reminder
-                        <i className="fas fa-chevron-up icon"></i> {/* Font Awesome icon */}
+                        <i className=""></i> {/* Font Awesome icon */}
                     </a>
                 </li>
             </ul>
@@ -35,7 +35,7 @@ const Navbar = () => {
                 <input type="text" placeholder="Search..." />
             </div>
             <div className="icons">
-                <a href="#"><i className="fas fa-bell"></i></a>
+                <a href="#"><i className="fa-solid fa-right-from-bracket"></i></a>
                 <a href="#"><i className="fas fa-user"></i></a>
             </div>
         </nav>

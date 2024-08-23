@@ -23,13 +23,13 @@ body {
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
-  gap: 50px; /* Increase the gap between cards */
-  width: 100%; /* Ensure the container takes up full width */
-  max-width: 1200px; /* Limit the maximum width of the container */
-  margin: 0 auto; /* Center the container */
-  padding: 0 20px; /* Padding to ensure spacing on smaller screens */
-  margin-bottom: 4rem; /* Increase the bottom margin of the entire section */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 63px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+  margin-bottom: 4rem;
   margin-top: 4rem;
 }
 
