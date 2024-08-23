@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 app.use("/user", userRoutes);
 
 // Cron job to send reminders daily at 10:32 AM
-cron.schedule('32 10 * * *', async () => {
+cron.schedule('32 11 * * *', async () => {
     try {
         const { sendReminders } = require('./controller/user.js');
         await sendReminders(transporter);
