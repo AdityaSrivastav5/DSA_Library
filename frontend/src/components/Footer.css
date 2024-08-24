@@ -1,0 +1,62 @@
+/* src/components/Footer.css */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .feedback-section {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  
+  .feedback-title {
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .text-area-container {
+    display: flex;
+    position: relative;
+  }
+  
+  .text-area {
+    width: 75%;
+    height: 238px;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+  }
+  
+  .button {
+    position: absolute;
+    bottom: 0px;
+    right: 22px; /* Adjusted to reduce the gap */
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .social-icons {
+    margin-right: 100px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+  }
+  
+  .icon-link {
+    color: #fff;
+    text-decoration: none;
+  }
+  
