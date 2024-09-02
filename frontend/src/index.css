@@ -1,12 +1,30 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+/* General Reset and Box-Sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.container{
-    width: 100vw;
-    min-height  : 100vh;
-    background: white;
 
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: var(--clr-neutral-900);
+}
+
+:root {
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-accent-400: hsl(142, 90%, 61%);
 }
