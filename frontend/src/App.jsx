@@ -10,6 +10,7 @@ function App() {
       <Navbar />
       <Card />
       <Footer />
+      <h1>hello</h1>
     </div>
   )
 }
