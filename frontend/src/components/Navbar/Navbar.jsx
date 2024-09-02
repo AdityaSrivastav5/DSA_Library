@@ -8,7 +8,7 @@ const Navbar = () => {
             </div>
             <ul className="nav-links">
                 <li className="nav-item">
-                    <Link to="#">
+                    <Link to="/">
                         Home
                         <i className=""></i> {/* Font Awesome icon */}
                     </Link>
@@ -25,7 +25,7 @@ const Navbar = () => {
                     </ul>
                 </li>
                 <li className="nav-item">
-                    <Link to="#">
+                    <Link to="/reminder">
                         Reminder
                         <i className=""></i> {/* Font Awesome icon */}
                     </Link>
