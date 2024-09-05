@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <Card />
       <Footer />
-      <h1>hello</h1>
+      <h1>Hiiiiiii</h1>
     </div>
   )
 }
