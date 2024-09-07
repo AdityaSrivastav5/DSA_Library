@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <Card />
       <Footer />
-      <h1>madhav bhai full tabahi</h1>
+      <h1></h1>
     </div>
   )
 }

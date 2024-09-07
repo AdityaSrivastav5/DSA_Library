@@ -1,6 +1,12 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+
 const Navbar = () => {
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
         <nav className="navbar">
             <div className="logo">
@@ -35,8 +41,44 @@ const Navbar = () => {
                 <input type="text" placeholder="Search..." />
             </div>
             <div className="icons">
-                <Link to="#"><i className="fa-solid fa-right-from-bracket"></i></Link>
-                <Link to="#"><i className="fas fa-user"></i></Link>
+                {/* Clerk Authentication Buttons */}
+                <div className="auth-buttons">
+                    <SignedOut>
+                        <SignInButton asChild>
+                            <button
+                                onMouseEnter={() => setIsHovered(true)}
+                                onMouseLeave={() => setIsHovered(false)}
+                                style={{
+                                    padding: '10px 20px',
+                                    backgroundColor: isHovered ? '#262626' : '#000000', // Lighter shade on hover
+                                    color: 'white',
+                                    fontFamily: 'sans-serif',
+                                    fontSize: '21px',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                    transition: 'background-color 0.3s ease' // Smooth transition for hover effect
+                                }}
+                            >
+                                Sign In
+                            </button>
+
+                        </SignInButton>
+                    </SignedOut>
+                    <SignedIn>
+                        <UserButton
+                            appearance={{
+                                elements: {
+                                    userButtonAvatarBox: {
+                                        width: '45px', // Customize width
+                                        height: '45px', // Customize height
+                                    },
+                                },
+                            }}
+                        />
+
+                    </SignedIn>
+                </div>
             </div>
         </nav>
     );
