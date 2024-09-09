@@ -10,6 +10,7 @@ const Layout = () => {
       <Navbar />
       <Outlet />
       <Footer />
+      <h1>hello</h1>
     </>
   );
 };
