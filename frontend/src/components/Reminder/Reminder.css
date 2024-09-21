@@ -1,0 +1,260 @@
+.reminder-section {
+    border-radius: 40px;
+    padding: 31px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 40px;
+}
+
+.reminder-heading {
+    font-size: 45px;
+    margin-bottom: 35px;
+}
+
+.motivational-message {
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+}
+
+.greeting {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 44px; /* Increased margin */
+}
+
+.message-body {
+    font-size: 22px;
+    margin-bottom: 47px; /* Increased margin between sections */
+}
+
+.closing {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.topic-selection {
+    margin-top: 20px;
+}
+
+.topic-label {
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 34px;
+}
+
+.capsules-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.capsule {
+    background-color: #333;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.capsule:hover {
+    background-color: #989898;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.capsule.selected {
+    background-color: #3f3f3f;
+    color: white;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button {
+    margin-top: 40px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #323333;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #737476;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .reminder-heading {
+        font-size: 36px;
+    }
+    
+    .motivational-message {
+        padding: 20px;
+    }
+
+    .greeting {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    .message-body {
+        font-size: 20px;
+        margin-bottom: 35px;
+    }
+
+    .closing {
+        font-size: 26px;
+    }
+
+    .topic-label {
+        font-size: 22px;
+        margin-bottom: 28px;
+    }
+
+    .capsules-container {
+        gap: 20px;
+    }
+
+    .submit-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .reminder-section {
+        margin: 20px;
+    }
+
+    .reminder-heading {
+        font-size: 30px;
+    }
+
+    .motivational-message {
+        padding: 15px;
+    }
+
+    .greeting {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+
+    .message-body {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .closing {
+        font-size: 22px;
+    }
+
+    .topic-label {
+        font-size: 20px;
+        margin-bottom: 24px;
+    }
+
+    .capsules-container {
+        gap: 15px;
+    }
+
+    .submit-button {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reminder-section {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    .reminder-heading {
+        font-size: 24px;
+    }
+
+    .motivational-message {
+        padding: 10px;
+    }
+
+    .greeting {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .message-body {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    .closing {
+        font-size: 20px;
+    }
+
+    .topic-label {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .capsules-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .capsule {
+        padding: 8px 16px;
+    }
+
+    .submit-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .reminder-heading {
+        font-size: 20px;
+    }
+
+    .motivational-message {
+        padding: 8px;
+    }
+
+    .greeting {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .message-body {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .closing {
+        font-size: 18px;
+    }
+
+    .topic-label {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .capsule {
+        padding: 6px 12px;
+    }
+
+    .submit-button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}

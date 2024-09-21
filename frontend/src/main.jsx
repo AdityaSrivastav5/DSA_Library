@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ClerkProvider } from '@clerk/clerk-react';
 import Layout from './Layout.jsx';
 import Card from './components/Card/Card.jsx';
-import Reminder from './components/Reminder/Reminder.jsx';
+import ReminderSection from './components/Reminder/Reminder.jsx';
 import HeroPage from './components/HeroPage/HeroPage.jsx';
 
 // Import your publishable key
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'reminder',  // Route for the reminder page
-        element: <Reminder />
+        element: <ReminderSection/>
       },
       {
         path: 'questions', // Add a new route for the App component

@@ -97,3 +97,46 @@ input[type="checkbox"] {
   font-size: 20px;
   font-weight: 580;
 }
+
+@media only screen and (max-width: 805px) {
+  .app {
+    margin: 20px;
+  }
+
+  .content {
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .heading {
+    font-size: 32px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  .heading span {
+    font-size: 14px;
+  }
+
+  .questions-table th {
+    font-size: 20px;
+    padding: 6px;
+  }
+
+  .questions-table td {
+    font-size: 18px;
+    padding: 6px;
+  }
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Add responsiveness to the table */
+  .questions-table {
+    table-layout: fixed;
+
+  }
+
+}
