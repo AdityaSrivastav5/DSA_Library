@@ -1,5 +1,5 @@
 .footer {
-  background-color: #3b3b3b;
+  background-color: #020202;
   color: white;
   padding: 40px 0;
 }
@@ -16,6 +16,7 @@
 .footer-left, .footer-middle, .footer-right {
   flex: 1;
   margin: 10px;
+  align-items: end;
 }
 
 .footer-left h3 {
@@ -55,6 +56,7 @@
 
 .footer-right {
   max-width: 300px;
+  align-content: center;
 }
 
 .feedback-form {
@@ -78,7 +80,7 @@
 
 .feedback-form button {
   padding: 10px;
-  background-color: #18bc9c;
+  background-color: #464646;
   color: white;
   border: none;
   border-radius: 4px;
@@ -88,7 +90,7 @@
 }
 
 .feedback-form button:hover {
-  background-color: #16a085;
+  background-color: #858585;
 }
 
 .footer-social {
@@ -103,8 +105,7 @@
 
 .social-icons {
   display: flex;
-  justify-content: center;
-  gap: 15px; /* Add space between icons */
+  gap: 45px; /* Add space between icons */
 }
 
 .social-icons a {
@@ -123,6 +124,16 @@
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 40px;
+}
+
+.fab {
+  font-weight: 400;
+  font-size: 35px;
+}
+
+.footer-middle h4, .footer-right h4 {
+  margin-bottom: 28px;
+  font-size: 26px;
 }
 
 .footer-bottom p {

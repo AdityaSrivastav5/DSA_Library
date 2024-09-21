@@ -1,6 +1,8 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import logo from "../../assets/LOGO.png"
+
 
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
 
@@ -10,7 +12,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="logo">
-                <Link to="#">LOGO</Link>
+                <Link to="#"><img src={logo} width={120} height='auto'></img></Link>
             </div>
             <ul className="nav-links">
                 <li className="nav-item">

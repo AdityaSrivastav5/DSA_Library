@@ -29,29 +29,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-left">
-          <h3>AMR</h3>
-          <p>Level up your coding skills with daily challenges and curated resources!</p>
-        </div>
-
-        <div className="footer-right">
-          <h4>Follow Us</h4>
-          <div className="social-icons">
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-        </div>
-      </div>
 
       <div className="footer-right">
           <h4>Feedback</h4>
@@ -82,6 +59,27 @@ const Footer = () => {
             <button type="submit">Submit</button>
           </form>
         </div>
+
+        
+        <div className="footer-right">
+          <h4>Follow Us</h4>
+          <div className="social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
 
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} AMR. All rights reserved.</p>

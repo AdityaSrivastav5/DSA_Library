@@ -7,13 +7,17 @@ const HeroPage = () => {
     { id: 2, name: "Two Sum", link: "#", difficulty: "Medium" },
     { id: 3, name: "Valid Parentheses", link: "#", difficulty: "Medium" },
     { id: 4, name: "Set Matrix Zero's", link: "#", difficulty: "Hard" },
+    { id: 1, name: "Stock Buy and Sell", link: "#", difficulty: "Easy" },
+    { id: 2, name: "Two Sum", link: "#", difficulty: "Medium" },
+    { id: 3, name: "Valid Parentheses", link: "#", difficulty: "Medium" },
+    { id: 4, name: "Set Matrix Zero's", link: "#", difficulty: "Hard" },
   ];
 
   return (
     <div className="app">
       <div className="content">
         <h2 className="heading">
-          Array :- <span>Array is a linear data structure which contains the elements in the sequential form</span>
+          Array
         </h2>
 
         <table className="questions-table">
@@ -36,7 +40,7 @@ const HeroPage = () => {
                 </td>
                 <td>
                   <a href={question.link} target="_blank" rel="noreferrer">
-                    Link
+                    Go Ahead
                   </a>
                 </td>
                 <td className={`difficulty ${question.difficulty.toLowerCase()}`}>

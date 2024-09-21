@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <Reminder />
       },
       {
-        path: 'array-questions', // Add a new route for the App component
+        path: 'questions', // Add a new route for the App component
         element: <HeroPage />
       }
     ]
