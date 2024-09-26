@@ -133,7 +133,6 @@ input[type="checkbox"] {
     height: 18px;
   }
 
-  /* Add responsiveness to the table */
   .questions-table {
     table-layout: fixed;
 
