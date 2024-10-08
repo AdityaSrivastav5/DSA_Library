@@ -61,7 +61,7 @@ body {
 }
 
 .nav-item:hover a {
-  color: #f39c12; /* Optional: Change color on hover */
+  color: #bababa; /* Optional: Change color on hover */
   transform: scale(1.1) translateX(10px); /* Scale up and move outward */
 }
 

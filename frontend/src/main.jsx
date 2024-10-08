@@ -6,7 +6,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ClerkProvider } from '@clerk/clerk-react';
 import Layout from './Layout.jsx';
 import Card from './components/Card/Card.jsx';
-import Reminder from './components/Reminder/Reminder.jsx';
+import ReminderSection from './components/Reminder/Reminder.jsx';
+import HeroPage from './components/HeroPage/HeroPage.jsx';
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -21,12 +22,16 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '',
+        path: '',   // This renders Card by default at the root
         element: <Card />
       },
       {
-        path: 'reminder',
-        element: <Reminder />
+        path: 'reminder',  // Route for the reminder page
+        element: <ReminderSection/>
+      },
+      {
+        path: 'questions', // Add a new route for the App component
+        element: <HeroPage />
       }
     ]
   }
