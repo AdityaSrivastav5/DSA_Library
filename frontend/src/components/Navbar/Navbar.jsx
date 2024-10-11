@@ -1,13 +1,34 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import logo from "../../assets/LOGO.png"
+import { useUser } from '@clerk/clerk-react';
+import { useState, useEffect } from 'react';
+import axios from "axios";
+import logo from "../../assets/LOGO.png";
 
 
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
 
 const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false);
+
+    const { user } = useUser();  // Clerk user object
+    
+    useEffect(() => {
+        if (user) {
+            // Send user data to backend after signing in
+            sendUserDataToBackend(user.id); // Sending Clerk user ID to backend
+        }
+    }, [user]);
+
+    // Function to send user data to backend
+    const sendUserDataToBackend = async (clerkUserId) => {
+        try {
+            const response = await axios.post('http://localhost:5000/user/add-user', { clerkUserId });
+            console.log(response.data);  // Log response from backend
+        } catch (error) {
+            console.error('Error sending user data to backend:', error);
+        }
+    };
 
     return (
         <nav className="navbar">

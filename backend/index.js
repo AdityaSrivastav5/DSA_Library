@@ -5,9 +5,6 @@ const cron = require("node-cron");
 const nodemailer = require('nodemailer');
 const { db } = require('./db/db.js');
 const userRoutes = require('./routes/route.js');
-const clerkRoutes = require('./routes/clerkRoutes');
-
-
 
 const app = express();
 const PORT = process.env.PORT || 5003;
@@ -30,18 +27,17 @@ const transporter = nodemailer.createTransport({
 // Routes
 app.use("/user", userRoutes);
 
-// Use Clerk routes
-app.use('/api/clerk', clerkRoutes);
-
+// Cron job to send reminders daily at 10:32 AM
 // Cron job to send reminders daily at 10:32 AM
 cron.schedule('32 11 * * *', async () => {
     try {
-        const { sendReminders } = require('./controller/user.js');
+        const { sendReminders } = require('./controller/reminderController.js'); // Correct path
         await sendReminders(transporter);
     } catch (error) {
         console.error('Error sending reminders:', error);
     }
 });
+
 
 // Start server
 app.listen(PORT, () => {
