@@ -1,38 +1,31 @@
-const User = require('../models/userModel');
-const { users } = require('@clerk/clerk-sdk-node'); // Clerk SDK for server-side use
+const User = require('../models/userModel.js'); // Make sure this path is correct
 
-exports.addClerkUserToDB = async (req, res) => {
+const addClerkUserToDB = async (req, res) => {
+  const { clerkUserId, email, username } = req.body;
+
   try {
-    // Fetch user ID from Clerk
-    const { clerkUserId } = req.body; // Make sure to pass the Clerk User ID in the request body
+      // Check if the user already exists in the database
+      let existingUser = await User.findOne({ email });
+      if (existingUser) {
+          return res.status(400).send('User already exists');
+      }
 
-    // Fetch user details from Clerk
-    const clerkUser = await users.getUser(clerkUserId);
+      // If username is not provided, set it to a default value or handle accordingly
+      const newUser = new User({
+          email,
+          username: username.trim() || 'Guest', // Set a default username if empty
+          selectedTopic: '',
+          lastQuestionIndex: -1,
+      });
 
-    // Prepare data for MongoDB
-    const userData = {
-      email: clerkUser.emailAddresses[0]?.emailAddress,
-      username: clerkUser.username || '',
-      // Add more fields from Clerk as needed
-      selectedTopic: '',
-      lastQuestionIndex: -1,
-    };
-
-    // Save or update user in MongoDB
-    const existingUser = await User.findOne({ email: userData.email });
-    if (existingUser) {
-      // If user already exists, update their details
-      existingUser.username = userData.username;
-      await existingUser.save();
-    } else {
-      // If user doesn't exist, create a new user
-      const newUser = new User(userData);
       await newUser.save();
-    }
-
-    res.status(200).send('User data saved to MongoDB');
+      res.status(201).send('User added successfully');
   } catch (error) {
-    console.error('Error saving user data:', error);
-    res.status(500).send('Error saving user data');
+      console.error('Error adding user to DB:', error);
+      res.status(500).send('Error adding user to DB');
   }
 };
+
+
+// Export the function
+module.exports = { addClerkUserToDB };

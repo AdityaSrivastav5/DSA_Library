@@ -10,6 +10,9 @@ const app = express();
 const PORT = process.env.PORT || 5003;
 
 // Middleware
+const cors = require('cors');
+app.use(cors()); // Allow all origins (for testing; adjust for production)
+
 app.use(bodyParser.json());
 
 // Database connection

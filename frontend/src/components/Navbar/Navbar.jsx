@@ -15,16 +15,27 @@ const Navbar = () => {
     
     useEffect(() => {
         if (user) {
-            // Send user data to backend after signing in
-            sendUserDataToBackend(user.id); // Sending Clerk user ID to backend
+            const clerkUserId = user.id;
+            const email = user.emailAddresses[0].emailAddress;
+            const username = user.username ? user.username.trim() : clerkUserId || email; // Fallback to an empty string if not available
+    
+            console.log('User details:', { clerkUserId, email, username }); // Log the values
+    
+            sendUserDataToBackend(clerkUserId, email, username);
         }
     }, [user]);
+    
 
     // Function to send user data to backend
-    const sendUserDataToBackend = async (clerkUserId) => {
+    const sendUserDataToBackend = async (clerkUserId, email, username) => {
         try {
-            const response = await axios.post('http://localhost:5000/user/add-user', { clerkUserId });
-            console.log(response.data);  // Log response from backend
+            console.log('Sending user data:', { clerkUserId, email, username }); // Add this line
+            const response = await axios.post('http://localhost:5003/user/add-user', {
+                clerkUserId,
+                email,
+                username,
+            });
+            console.log(response.data);
         } catch (error) {
             console.error('Error sending user data to backend:', error);
         }
