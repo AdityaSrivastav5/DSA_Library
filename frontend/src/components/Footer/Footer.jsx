@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './Footer.css';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -17,20 +16,40 @@ const Footer = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can handle the form submission logic here, such as sending the data to a backend
-    console.log('Feedback Submitted:', formData);
-    setFormData({ name: '', email: '', message: '' }); // Reset form after submission
+
+    const feedbackData = {
+      name: formData.name,
+      email: formData.email,
+      feedback: formData.message,
+    };
+
+    try {
+      const response = await fetch('http://localhost:5003/user/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(feedbackData),
+      });
+
+      if (response.ok) {
+        alert('Feedback submitted successfully!');
+        setFormData({ name: '', email: '', message: '' }); // Reset form
+      } else {
+        alert('Failed to submit feedback.');
+      }
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
-
-
 
   return (
     <footer className="footer">
       <div className="footer-container">
-
-      <div className="footer-right">
+        <div className="footer-right">
           <h4>Feedback</h4>
           <form className="feedback-form" onSubmit={handleSubmit}>
             <input
@@ -60,7 +79,6 @@ const Footer = () => {
           </form>
         </div>
 
-        
         <div className="footer-right">
           <h4>Follow Us</h4>
           <div className="social-icons">
@@ -79,7 +97,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
 
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} AMR. All rights reserved.</p>
