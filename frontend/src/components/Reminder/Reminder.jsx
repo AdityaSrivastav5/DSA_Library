@@ -2,22 +2,12 @@ import { useState } from 'react';
 // import axios from 'axios';
 // import { useUser } from '@clerk/clerk-react'; // Import Clerk's useUser hook
 import './Reminder.css'; // Import the CSS for styling
+import DSAQuestions from '../../data/DSAQuestion.json';
 
 const ReminderSection = () => {
-    // Hardcoded topics
-    const topicsList = [
-        'Arrays',
-        'Linked Lists',
-        'Stacks',
-        'Queues',
-        'Trees',
-        'Graphs',
-        'Dynamic Programming',
-        'Sorting'
-    ];
     const [selectedTopic, setSelectedTopic] = useState('');
     // const { user } = useUser(); // Get user details from Clerk
-
+    const topicsList = DSAQuestions.map(item => item.topicName);
     const handleTopicChange = (topic) => {
         setSelectedTopic(topic);
     };
