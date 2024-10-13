@@ -1,21 +1,13 @@
 import './Card.css';
-
-const cards = [
-  { title: 'Array' },
-  { title: 'Linked List' },
-  { title: 'Hash Map' },
-  { title: 'Tree' },
-  { title: 'DP' },
-  { title: 'String' },
-];
+import DSAQuestion from '../../data/DSAQuestion.json';
 
 const Card = () => {
   return (
     <div className="card-container">
-      {cards.map((card, index) => (
+      {DSAQuestion.map((card, index) => (
         <div className="card" key={index}>
           <div className="card-content">
-            <h2 className="card-title">{card.title}</h2>
+            <h2 className="card-title">{card.topicName}</h2>
             <p className="card-body">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, culpa.
             </p>
