@@ -1,5 +1,5 @@
 :root {
-  /* --clr-neutral-900: hsl(207, 19%, 9%); */
+  --clr-neutral-900: hsl(207, 19%, 9%);
   --clr-neutral-100: hsl(0, 0%, 100%);
   --clr-accent-400: hsl(142, 90%, 61%);
 }
@@ -31,82 +31,95 @@ body {
   padding: 0 10px;
   margin-bottom: 4rem;
   margin-top: 4rem;
+  perspective: 1500px; /* Perspective for 3D effect */
 }
 
 .card {
   color: var(--clr-neutral-100);
   background-color: black;
-  background-size: cover;
-  width: 350px; /* Increase the width of each card */
-  height: 230px; /* Adjust height proportionally */
-  border-radius: 2rem;
-  overflow: hidden;
-  transition: transform 500ms ease;
+  width: 350px; /* Width of each card */
+  height: 230px; /* Height of each card */
+  border-radius: 2rem; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative; /* For absolute positioning of child elements */
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.5), /* Darker soft shadow */
+    0 25px 50px rgba(0, 0, 0, 0.4); /* Stronger shadow for depth */
 }
 
-
-.card:hover,
-.card:focus-within {
-  transform: scale(1.05);
+/* Add shadow effect on hover */
+.card:hover {
+  transform: translateZ(30px) rotateY(5deg); /* Move forward and rotate on hover */
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.7), /* Even darker shadow on hover */
+    0 40px 80px rgba(0, 0, 0, 0.6); /* Stronger shadow for depth on hover */
 }
 
 .card-content {
-  text-align: center;
-  padding: 20px;
+  text-align: center; /* Center text */
+  padding: 20px; /* Padding inside the card */
 }
 
 .card-title {
-  font-size: 24px;
-  margin-bottom: 10px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.card-body {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  font-size: 16px;
+  font-size: 24px; /* Font size for the title */
+  margin-bottom: 10px; /* Margin below title */
+  transition: transform 0.4s ease, text-shadow 0.4s ease; /* Smooth transitions for movement and shadow */
+  text-shadow: 
+    0 2px 4px rgba(255, 255, 255, 0.3), /* Light white shadow for depth */
+    0 4px 8px rgba(0, 0, 0, 0.6); /* Darker shadow for contrast */
 }
 
 .card:hover .card-title {
-  transform: translateY(-20px);
+  transform: translateY(-15px); /* Move title up more on hover */
+  text-shadow: 
+    0 4px 8px rgba(255, 255, 255, 0.5), /* Brighter light shadow on hover */
+    0 8px 16px rgba(0, 0, 0, 0.7); /* Darker shadow for depth on hover */
+}
+
+.card-body {
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Move down */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition for body */
 }
 
 .card:hover .card-body {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; /* Show body on hover */
+  transform: translateY(0); /* Move to original position */
 }
 
+/* Button styles */
 .button {
-  cursor: pointer;
-  display: inline-block;
-  text-decoration: none;
-  color: var(--clr-neutral-900);
-  background-color: var(--clr-accent-400);
-  padding: 0.5em 1.25em;
-  border-radius: 0.25rem;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
+  cursor: pointer; /* Change cursor on hover */
+  display: inline-block; /* Inline block for proper spacing */
+  text-decoration: none; /* Remove underline */
+  color: var(--clr-neutral-900); /* Button text color */
+  background-color: var(--clr-accent-400); /* Button background color */
+  padding: 0.5em 1.25em; /* Padding for the button */
+  border-radius: 0.25rem; /* Rounded corners for the button */
+  margin-top: 10px; /* Space above button */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
 .button:hover,
 .button:focus {
-  background-color: var(--clr-neutral-100);
+  background-color: var(--clr-neutral-100); /* Change background color on hover */
 }
 
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
   .card-container {
     grid-template-columns: 1fr; /* Stack cards on smaller screens */
-    padding: 0 20px;
+    padding: 0 20px; /* Padding on sides */
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .card-container {
     grid-template-columns: repeat(2, 1fr); /* 2 cards in a row on medium screens */
-    padding: 0 30px;
+    padding: 0 30px; /* Padding on sides */
   }
 }

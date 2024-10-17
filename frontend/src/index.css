@@ -16,15 +16,27 @@ body,
   padding: 0;
 }
 
+/* Body Styles */
+
 body {
-  font-family: sans-serif;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: var(--clr-neutral-900);
+  min-height: 100vh;
+  /* Choose one of the gradient backgrounds below */
+  background: linear-gradient(135deg, #1e3c72, #2a69ac); /* Blue to Purple */
+  /* background: linear-gradient(135deg, #00b09b, #96c93d);  Teal to Blue */
+  /* background: linear-gradient(135deg, #ff7e5f, #feb47b);  Orange to Pink */
+  /* background: linear-gradient(135deg, #4caf50, #8bc34a);  Green to Blue */
+  /* background: linear-gradient(135deg, #ff758c, #ff7eb3);  Sunset */
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
+/* Root Color Variables */
 :root {
+  --clr-neutral-900: hsl(207, 19%, 9%);
   --clr-neutral-100: hsl(0, 0%, 100%);
   --clr-accent-400: hsl(142, 90%, 61%);
 }
