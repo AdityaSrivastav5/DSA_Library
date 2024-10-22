@@ -115,9 +115,23 @@
   transition: color 0.3s;
 }
 
-.social-icons a:hover {
-  color: #18bc9c;
+.facebook:hover{
+  color: #1877F2;
 }
+
+.twitter:hover{
+  color: #349fdd;
+}
+
+.instagram:hover{
+  color: #8b1b39;
+}
+
+.linkedin:hover{
+  color: #024061;
+}
+
+
 
 .footer-bottom {
   text-align: center;

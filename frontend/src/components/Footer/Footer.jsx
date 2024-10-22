@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import './Footer.css';
 
 const Footer = () => {
@@ -47,7 +47,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer">
+    <footer id="contact-section" className="footer">
       <div className="footer-container">
         <div className="footer-right">
           <h4>Feedback</h4>
@@ -82,16 +82,16 @@ const Footer = () => {
         <div className="footer-right">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <a className="facebook" href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
+            <a className="twitter" href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a className="instagram" href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <a className="linkedin" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
             </a>
           </div>
