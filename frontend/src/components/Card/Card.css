@@ -20,6 +20,15 @@ body {
   margin: 0;
   padding: 0;
 }
+ 
+.card-container a {
+  text-decoration: none; /* Remove underline */
+  color: inherit;        /* Inherit the text color from the parent */
+}
+
+.card-container a:hover {
+  text-decoration: none; /* Ensure hover doesn't add underline */
+}
 
 .card-container {
   display: grid;
@@ -35,7 +44,7 @@ body {
 }
 
 .card {
-  color: var(--clr-neutral-100);
+  color: var(--clr-neutral-100);  
   background-color: black;
   width: 350px; /* Width of each card */
   height: 230px; /* Height of each card */

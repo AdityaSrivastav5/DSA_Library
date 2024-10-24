@@ -19,6 +19,10 @@ body,
 /* Body Styles */
 
 body {
+  
+    background-color: white !important;  /* Use !important to force white background */
+    color: black;
+  
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -33,6 +37,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 
 /* Root Color Variables */
 :root {
