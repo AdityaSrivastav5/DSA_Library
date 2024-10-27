@@ -18,7 +18,7 @@ function LinkedListPage() {
             <tr>
               <th>S.No</th>
               <th>Question Name</th>
-              <th>Status</th>
+              <th>Difficulty</th>
               <th>Link</th>
               <th>Additional Link</th> {/* Changed to make it clear it's an additional link */}
             </tr>
@@ -28,8 +28,8 @@ function LinkedListPage() {
               <tr key={index}> {/* Use question index as key */}
                 <td>{index + 1}</td>
                 <td>{question.Problem}</td> {/* Ensure this matches your JSON structure */}
-                <td>
-                  <input type="checkbox" />
+                <td className={`difficulty ${question.difficulty.toLowerCase()}`}>
+                  {question.difficulty}
                 </td>
                 <td>
                   <a href={question.URL} target="_blank" rel="noreferrer">
@@ -41,10 +41,6 @@ function LinkedListPage() {
                     Go Ahead
                   </a>
                 </td>
-                {/* Uncomment and adjust difficulty if applicable */}
-                {/* <td className={difficulty ${question.difficulty.toLowerCase()}}>
-                  {question.difficulty}
-                </td> */}
               </tr>
             ))}
           </tbody>

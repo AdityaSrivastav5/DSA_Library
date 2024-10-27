@@ -30,7 +30,7 @@ function ArrayPage() {
                 <td>{question.Problem}</td> {/* Ensure this matches your JSON structure */}
                 <td className={`difficulty ${question.difficulty.toLowerCase()}`}>
                   {question.difficulty}
-                </td>
+                </td> 
                 <td>
                   <a href={question.URL} target="_blank" rel="noreferrer">
                     Go Ahead
