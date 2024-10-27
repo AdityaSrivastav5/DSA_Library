@@ -95,6 +95,12 @@ const Footer = () => {
               <i className="fab fa-linkedin-in"></i>
             </a>
           </div>
+          <div className='contact'>
+            <h4>Contact Us</h4>
+            <div className='gmail'>
+              achievemoreregularly@gmail.com
+            </div>
+          </div>
         </div>
       </div>
 
