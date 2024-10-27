@@ -32,7 +32,7 @@ app.use("/user", userRoutes);
 
 // Cron job to send reminders daily at 10:32 AM
 // Cron job to send reminders daily at 10:32 AM
-cron.schedule('32 11 * * *', async () => {
+cron.schedule('03 03 * * *', async () => {
     try {
         const { sendReminders } = require('./controller/reminderController.js'); // Correct path
         await sendReminders(transporter);

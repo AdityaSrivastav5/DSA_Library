@@ -6,6 +6,7 @@ import DSAQuestions from '../../data/DSAQuestion.json';
 
 const ReminderSection = () => {
     const [selectedTopic, setSelectedTopic] = useState('');
+    const [reminderSet, setReminderSet] = useState(false); // New state for reminder confirmation
     const { user } = useUser(); // Get user details from Clerk
     const topicsList = DSAQuestions.map(item => item.topicName);
 
@@ -19,15 +20,13 @@ const ReminderSection = () => {
             axios.post('http://localhost:5003/user/set-reminder', { email, topic: selectedTopic })
                 .then(response => {
                     console.log('Topic set successfully:', response.data);
-                    alert(`Reminder set for: ${selectedTopic}`); // Confirmation alert
                     setSelectedTopic(''); // Reset selection after submission
+                    setReminderSet(true); // Set the reminder confirmation state
+                    setTimeout(() => setReminderSet(false), 3000); // Reset after 3 seconds
                 })
                 .catch(error => {
                     console.error('Error setting topic:', error);
-                    alert('Failed to set reminder.'); // Error alert
                 });
-        } else {
-            alert('Please select a topic before setting a reminder.'); // Alert if no topic is selected
         }
     };
 
@@ -58,6 +57,7 @@ const ReminderSection = () => {
                     ))}
                 </div>
                 <button className="submit-button" onClick={handleSubmit}>Set Reminder</button> {/* Call submit function */}
+                {reminderSet && <div className="reminder-confirmation">Reminder set!</div>} {/* Confirmation box */}
             </div>
         </div>
     );
