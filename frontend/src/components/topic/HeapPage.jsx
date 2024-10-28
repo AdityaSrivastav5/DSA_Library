@@ -13,6 +13,8 @@ function HeapPage() {
           {topicName} {/* Display the topic name dynamically */}
         </h2>
 
+        <div class="questions-table-container">
+
         <table className="questions-table">
           <thead>
             <tr>
@@ -45,6 +47,7 @@ function HeapPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
