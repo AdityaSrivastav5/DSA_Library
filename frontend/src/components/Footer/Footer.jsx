@@ -88,7 +88,7 @@ const Footer = () => {
             <a className="twitter" href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
               <i className="fab fa-twitter"></i>
             </a>
-            <a className="instagram" href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a className="instagram" href="https://www.instagram.com/achieve_more_regularly/" target="_blank" rel="noreferrer" aria-label="Instagram">
               <i className="fab fa-instagram"></i>
             </a>
             <a className="linkedin" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">

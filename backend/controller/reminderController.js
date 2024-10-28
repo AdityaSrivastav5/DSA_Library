@@ -41,7 +41,19 @@ exports.sendReminders = async (transporter) => {
             const selectedQuestion = selectedDsaQuestion.questions[nextQuestionIndex];
             console.log(`Selected question for user ${user.email}:`, selectedQuestion);
 
-            const formattedMessage = `Today's question on ${user.selectedTopic}:\n\n${selectedQuestion.Problem}: ${selectedQuestion.URL}`;
+            const formattedMessage = `Subject: Today's question on ${user.selectedTopic} 
+
+Hi Achiever,
+
+Here's today’s challenge in ${user.selectedTopic} to keep you progressing:
+
+Problem of the Day: ${selectedQuestion.Problem}
+👉 ${selectedQuestion.URL}
+
+Stay consistent, and remember, each problem brings you one step closer to mastering ${user.selectedTopic}!
+
+Best of luck,
+Team AMR`;
             console.log(`Formatted message for ${user.email}: ${formattedMessage}`);
 
             const mailOptions = {

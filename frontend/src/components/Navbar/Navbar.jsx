@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import logo from "../../assets/LOGO.png";
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 import DSAQuestion from '../../data/DSAQuestion.json'; // Import JSON file directly
 
 const Navbar = () => {
@@ -19,9 +20,22 @@ const Navbar = () => {
       const clerkUserId = user.id;
       const email = user.emailAddresses[0].emailAddress;
       const username = user.username ? user.username.trim() : clerkUserId || email;
-      console.log('User details:', { clerkUserId, email, username });
+
+      sendUserDataToBackend(clerkUserId, email, username);
     }
   }, [user]);
+
+  const sendUserDataToBackend = async (clerkUserId, email, username) => {
+    try {
+      await axios.post('http://localhost:5003/user/add-user', {
+        clerkUserId,
+        email,
+        username,
+      });
+    } catch (error) {
+      console.error('Error sending user data to backend:', error);
+    }
+  };
 
   const handleSearch = () => {
     console.log("Searching for topic:", searchTopic);

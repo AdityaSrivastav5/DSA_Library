@@ -109,6 +109,23 @@
     background-color: #737476;
 }
 
+.error-message {
+    margin-top: 10px;
+    color: white;
+    background-color: #f44336; /* Red background */
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.capsule.selected {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Example glow effect */
+}
+
+.capsule:not(.selected) {
+    box-shadow: none; /* Clear glow when not selected */
+}
+
 /* Responsive styles */
 @media (max-width: 1200px) {
     .reminder-heading {

@@ -1,34 +1,43 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useUser } from '@clerk/clerk-react'; // Import Clerk's useUser hook
-import './Reminder.css'; // Import the CSS for styling
+import { useUser } from '@clerk/clerk-react';
+import './Reminder.css';
 import DSAQuestions from '../../data/DSAQuestion.json';
 
 const ReminderSection = () => {
     const [selectedTopic, setSelectedTopic] = useState('');
-    const [reminderSet, setReminderSet] = useState(false); // New state for reminder confirmation
-    const { user } = useUser(); // Get user details from Clerk
+    const [reminderSet, setReminderSet] = useState(false);
+    const [error, setError] = useState(''); // New state for error messages
+    const { user } = useUser();
     const topicsList = DSAQuestions.map(item => item.topicName);
 
     const handleTopicChange = (topic) => {
         setSelectedTopic(topic);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (selectedTopic && user) {
-            const email = user.primaryEmailAddress.emailAddress; // Get the logged-in user's email
-            axios.post('http://localhost:5003/user/set-reminder', { email, topic: selectedTopic })
-                .then(response => {
-                    console.log('Topic set successfully:', response.data);
-                    setSelectedTopic(''); // Reset selection after submission
-                    setReminderSet(true); // Set the reminder confirmation state
-                    setTimeout(() => setReminderSet(false), 3000); // Reset after 3 seconds
-                })
-                .catch(error => {
-                    console.error('Error setting topic:', error);
-                });
+            const email = user.primaryEmailAddress.emailAddress; // Get user email from Clerk
+            console.log("User Email:", email); // Log the email being sent for verification
+    
+            try {
+                await axios.post('http://localhost:5003/user/set-reminder', { email, topic: selectedTopic });
+    
+                console.log('Topic set successfully');
+                setSelectedTopic('');
+                setReminderSet(true);
+                setTimeout(() => setReminderSet(false), 3000);
+            } catch (error) {
+                console.error('Error setting reminder:', error);
+            }
+        } else {
+            setError('User not found or Topic not selected.');
+            setSelectedTopic('');
+            setTimeout(() => setError(''), 3000);
         }
     };
+    
+    
 
     return (
         <div className="reminder-section">
@@ -50,14 +59,15 @@ const ReminderSection = () => {
                         <div
                             key={index}
                             className={`capsule ${selectedTopic === topic ? 'selected' : ''}`}
-                            onClick={() => handleTopicChange(topic)} // Update the selected topic
+                            onClick={() => handleTopicChange(topic)}
                         >
                             {topic}
                         </div>
                     ))}
                 </div>
-                <button className="submit-button" onClick={handleSubmit}>Set Reminder</button> {/* Call submit function */}
-                {reminderSet && <div className="reminder-confirmation">Reminder set!</div>} {/* Confirmation box */}
+                <button className="submit-button" onClick={handleSubmit}>Set Reminder</button>
+                {reminderSet && <div className="reminder-confirmation">Reminder set!</div>}
+                {error && <div className="error-message">{error}</div>} {/* Error message box */}
             </div>
         </div>
     );

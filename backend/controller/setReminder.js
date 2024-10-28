@@ -1,4 +1,4 @@
-const User = require('../models/userModel.js');
+const User = require("../models/userModel.js");
 
 const setReminder = async (req, res) => {
     const { email, topic } = req.body;
@@ -11,8 +11,8 @@ const setReminder = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Update the selectedTopic in the user document
-        user.selectedTopic = topic;
+        // Create a new object to avoid reassignment of a constant
+        user.selectedTopic = topic; // Modify the existing user object
         await user.save();
 
         return res.status(200).json({ message: 'Reminder set successfully', selectedTopic: user.selectedTopic });
@@ -22,4 +22,4 @@ const setReminder = async (req, res) => {
     }
 }
 
-module.exports = setReminder; 
+module.exports = setReminder;
