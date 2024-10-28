@@ -19,6 +19,7 @@ body {
   margin: 30px 40px 2rem;
   border-radius: 30px;
 }
+
 .logo a {
   color: #FFFFFF;
   text-decoration: none;
@@ -112,34 +113,119 @@ body {
   position: fixed;
   top: 115px;
   right: 50px;
-  background: linear-gradient(135deg, #efdede, #eac7c7); /* Gradient background */
+  background: linear-gradient(135deg, #efdede, #eac7c7);
   color: #9c0303;
   font-weight: 700;
-  padding: 15px 20px; /* Increased padding */
-  border-radius: 10px; /* Slightly less rounded corners */
-  border: solid 2px #d26767; /* Red border */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Softer shadow */
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: solid 2px #d26767;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all 0.3s ease; /* Transition effect for hover */
+  transition: all 0.3s ease;
 }
 
 .alert-box:hover {
-  transform: scale(1.05); /* Slightly scale on hover for effect */
+  transform: scale(1.05);
 }
 
 .alert-box span {
   margin-right: 10px;
 }
 
-/* Add an icon to the alert */
 .alert-icon {
   margin-right: 10px;
-  font-size: 24px; /* Icon size */
+  font-size: 24px;
 }
 
 .icons {
   display: flex;
   align-items: center;
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 15px;
+  }
+
+  .logo a {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+  }
+
+  .nav-item a {
+    font-size: 20px;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 10px 40px 10px 15px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .alert-box {
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .alert-icon {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    margin: 10px;
+    padding: 5px;
+  }
+
+  .logo a {
+    font-size: 18px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-item {
+    margin: 8px 0;
+  }
+
+  .nav-item a {
+    font-size: 18px;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 8px 20px 8px 10px;
+    font-size: 15px;
+    width: 90%;
+  }
+
+  .alert-box {
+    top: 10px;
+    right: 5px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .alert-icon {
+    font-size: 18px;
+  }
 }
