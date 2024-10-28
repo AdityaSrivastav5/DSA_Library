@@ -27,7 +27,7 @@ const Navbar = () => {
 
   const sendUserDataToBackend = async (clerkUserId, email, username) => {
     try {
-      await axios.post('http://localhost:5003/user/add-user', {
+      await axios.post('https://dsa-library.onrender.com/user/add-user', {
         clerkUserId,
         email,
         username,

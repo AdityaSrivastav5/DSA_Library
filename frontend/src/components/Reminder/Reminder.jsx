@@ -21,7 +21,7 @@ const ReminderSection = () => {
             console.log("User Email:", email); // Log the email being sent for verification
     
             try {
-                await axios.post('http://localhost:5003/user/set-reminder', { email, topic: selectedTopic });
+                await axios.post('https://dsa-library.onrender.com/user/set-reminder', { email, topic: selectedTopic });
     
                 console.log('Topic set successfully');
                 setSelectedTopic('');

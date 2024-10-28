@@ -26,7 +26,7 @@ const Footer = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5003/user/feedback', {
+      const response = await fetch('https://dsa-library.onrender.com/user/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
