@@ -8,6 +8,9 @@ const Footer = () => {
     message: '',
   });
 
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -35,14 +38,21 @@ const Footer = () => {
       });
 
       if (response.ok) {
-        alert('Feedback submitted successfully!');
+        setIsError(false);
+        setShowConfirmation(true);
         setFormData({ name: '', email: '', message: '' }); // Reset form
+        setTimeout(() => setShowConfirmation(false), 3000);
+
       } else {
-        alert('Failed to submit feedback.');
+        setIsError(true);
+        setShowConfirmation(true); // Show error message
+        setTimeout(() => setShowConfirmation(false), 3000);
       }
     } catch (error) {
       console.error('Error submitting feedback:', error);
-      alert('An error occurred. Please try again.');
+      setIsError(true);
+      setShowConfirmation(true); // Show error message
+      setTimeout(() => setShowConfirmation(false), 3000);
     }
   };
 
@@ -77,6 +87,11 @@ const Footer = () => {
             ></textarea>
             <button type="submit">Submit</button>
           </form>
+          {showConfirmation && (
+            <div className={`confirmation-box ${isError ? 'error' : 'success'}`}>
+              {isError ? 'Failed to submit feedback. Please try again.' : 'Feedback submitted successfully!'}
+            </div>
+          )}
         </div>
 
         <div className="footer-right">
