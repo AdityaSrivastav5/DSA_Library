@@ -49,6 +49,7 @@ Here's today’s challenge in ${user.selectedTopic} to keep you progressing:
 
 Problem of the Day: ${selectedQuestion.Problem}
 👉 ${selectedQuestion.URL}
+👉 ${selectedQuestion.URL2}
 
 Stay consistent, and remember, each problem brings you one step closer to mastering ${user.selectedTopic}!
 
