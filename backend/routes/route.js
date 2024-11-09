@@ -1,7 +1,6 @@
 const express = require("express");
 const { signup } = require('../controller/user.js');
-// const { sendReminders } = require('../controller/reminderController.js');
-// const { addClerkUserToDB } = require('../controllers/clerkController');
+const { sendReminders } = require('../controller/reminderController.js');
 const { addClerkUserToDB } = require('../controller/clerkController.js')
 const router = express.Router();
 const Feedback = require('../models/feedbackModel.js')
