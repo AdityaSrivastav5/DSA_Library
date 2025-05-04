@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Footer.css';
+import { FiSend, FiMail, FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,13 @@ const Footer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      setIsError(true);
+      setShowConfirmation(true);
+      setTimeout(() => setShowConfirmation(false), 3000);
+      return;
+    }
 
     const feedbackData = {
       name: formData.name,
@@ -40,85 +48,101 @@ const Footer = () => {
       if (response.ok) {
         setIsError(false);
         setShowConfirmation(true);
-        setFormData({ name: '', email: '', message: '' }); // Reset form
+        setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setShowConfirmation(false), 3000);
-
       } else {
-        setIsError(true);
-        setShowConfirmation(true); // Show error message
-        setTimeout(() => setShowConfirmation(false), 3000);
+        throw new Error('Failed to submit feedback');
       }
     } catch (error) {
       console.error('Error submitting feedback:', error);
       setIsError(true);
-      setShowConfirmation(true); // Show error message
+      setShowConfirmation(true);
       setTimeout(() => setShowConfirmation(false), 3000);
     }
   };
 
   return (
     <footer id="contact-section" className="footer">
+      <div className="footer-wave"></div>
+      
       <div className="footer-container">
-        <div className="footer-right">
-          <h4>Feedback</h4>
+        <div className="footer-form">
+          <h3 className="footer-heading">Send Us Feedback</h3>
+          <p className="footer-subheading">We'd love to hear your thoughts</p>
+          
           <form className="feedback-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Your Feedback"
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-            ></textarea>
-            <button type="submit">Submit</button>
+            <div className="form-group">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </div>
+            
+            <div className="form-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+            </div>
+            
+            <div className="form-group">
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleInputChange}
+                rows="4"
+              ></textarea>
+            </div>
+            
+            <button type="submit" className="submit-btn">
+              <FiSend className="send-icon" />
+              Send Message
+            </button>
           </form>
+          
           {showConfirmation && (
-            <div className={`confirmation-box ${isError ? 'error' : 'success'}`}>
-              {isError ? 'Failed to submit feedback. Please try again.' : 'Feedback submitted successfully!'}
+            <div className={`confirmation-message ${isError ? 'error' : 'success'}`}>
+              {isError ? 'Failed to submit. Please try again.' : 'Thank you for your feedback!'}
             </div>
           )}
         </div>
-
-        <div className="footer-right">
-          <h4>Follow Us</h4>
-          <div className="social-icons">
-            <a className="facebook" href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
-              <i className="fab fa-facebook-f"></i>
+        
+        <div className="footer-social">
+          <h3 className="footer-heading">Connect With Us</h3>
+          <p className="footer-subheading">Follow our journey</p>
+          
+          <div className="social-links">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <FiFacebook className="social-icon" />
             </a>
-            <a className="twitter" href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <FiTwitter className="social-icon" />
             </a>
-            <a className="instagram" href="https://www.instagram.com/achieve_more_regularly/" target="_blank" rel="noreferrer" aria-label="Instagram">
-              <i className="fab fa-instagram"></i>
+            <a href="https://www.instagram.com/achieve_more_regularly/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FiInstagram className="social-icon" />
             </a>
-            <a className="linkedin" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <i className="fab fa-linkedin-in"></i>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <FiLinkedin className="social-icon" />
             </a>
           </div>
-          <div className='contact'>
-            <h4>Contact Us</h4>
-            <div className='gmail'>
-              achievemoreregularly@gmail.com
+          
+          <div className="contact-info">
+            <h4 className="contact-heading">Contact Information</h4>
+            <div className="email-link">
+              <FiMail className="mail-icon" />
+              <a href="mailto:achievemoreregularly@gmail.com">achievemoreregularly@gmail.com</a>
             </div>
           </div>
         </div>
       </div>
-
+      
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} AMR. All rights reserved.</p>
       </div>
@@ -126,4 +150,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer;  

@@ -1,29 +1,84 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import logo from "../../assets/LOGO.png";
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import DSAQuestion from '../../data/DSAQuestion.json'; // Import JSON file directly
+import DSAQuestion from '../../data/DSAQuestion.json';
+import { FiSearch, FiX, FiChevronDown } from 'react-icons/fi';
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [searchTopic, setSearchTopic] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [showAlert, setShowAlert] = useState(false);
-  const { user } = useUser();  // Clerk user object
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const { user } = useUser();
   const navigate = useNavigate();
+  const searchRef = useRef(null);
+
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     if (user) {
       const clerkUserId = user.id;
       const email = user.emailAddresses[0].emailAddress;
       const username = user.username ? user.username.trim() : clerkUserId || email;
-
       sendUserDataToBackend(clerkUserId, email, username);
     }
   }, [user]);
+
+  // Generate search suggestions
+  useEffect(() => {
+    if (searchTerm.trim() === '') {
+      setSuggestions([]);
+      return;
+    }
+
+    const lowerCaseTerm = searchTerm.toLowerCase();
+    const results = [];
+
+    // Add matching topics
+    DSAQuestion.forEach(topic => {
+      if (topic.topicName.toLowerCase().includes(lowerCaseTerm)) {
+        results.push({
+          type: 'Topic',
+          name: topic.topicName,
+          path: `/${topic.topicName.replace(/\s+/g, '-').replace(/&/g, 'and').toLowerCase()}`
+        });
+      }
+
+      // Add matching questions (limit to 3 per topic)
+      let questionCount = 0;
+      topic.questions.forEach(question => {
+        if (questionCount < 3 && question.Problem.toLowerCase().includes(lowerCaseTerm)) {
+          results.push({
+            type: 'Question',
+            name: question.Problem,
+            path: `/${topic.topicName.replace(/\s+/g, '-').replace(/&/g, 'and').toLowerCase()}`,
+            difficulty: question.difficulty
+          });
+          questionCount++;
+        }
+      });
+    });
+
+    setSuggestions(results.slice(0, 5)); // Limit to 5 suggestions
+  }, [searchTerm]);
 
   const sendUserDataToBackend = async (clerkUserId, email, username) => {
     try {
@@ -37,80 +92,68 @@ const Navbar = () => {
     }
   };
 
-  const handleSearch = () => {
-    console.log("Searching for topic:", searchTopic);
-  
-    // Find the first match for either topicName or problem name in questions
-    const matchData = DSAQuestion.find(topic =>
-      topic.topicName.toLowerCase() === searchTopic.toLowerCase() ||
-      topic.questions.some(question => 
-        question.Problem.toLowerCase() === searchTopic.toLowerCase()
-      )
-    );
+  const handleSearch = (suggestion = null) => {
+    let searchValue = suggestion ? suggestion.name : searchTerm;
+    if (!searchValue.trim()) return;
+    
+    let matchData;
+    
+    if (suggestion) {
+      // If a suggestion was clicked, navigate directly
+      navigate(suggestion.path);
+      setSearchTerm('');
+      setShowSuggestions(false);
+      return;
+    } else {
+      // Regular search logic
+      matchData = DSAQuestion.find(topic =>
+        topic.topicName.toLowerCase() === searchValue.toLowerCase() ||
+        topic.questions.some(question => 
+          question.Problem.toLowerCase() === searchValue.toLowerCase()
+        )
+      );
+    }
   
     if (matchData) {
-      // If we matched a topicName
-      if (matchData.topicName.toLowerCase() === searchTopic.toLowerCase()) {
-        const formattedTopicName = matchData.topicName
-          .replace(/\s+/g, '-')  // Replace spaces with hyphens
-          .replace(/&/g, 'and')  // Replace '&' with 'and'
-          .toLowerCase();
-        const redirectPath = `/${encodeURIComponent(formattedTopicName)}`;  // Redirect to the topic page
-        console.log("Redirecting to topic:", redirectPath);
-        navigate(redirectPath);
-      } 
-      // If we matched a Problem
-      else {
-        // Find the question that matched the problem name
-        const matchedQuestion = matchData.questions.find(question => 
-          question.Problem.toLowerCase() === searchTopic.toLowerCase()
-        );
-  
-        if (matchedQuestion) {
-          const formattedTopicName = matchData.topicName
-            .replace(/\s+/g, '-')  // Replace spaces with hyphens
-            .replace(/&/g, 'and')  // Replace '&' with 'and'
-            .toLowerCase();
-          
-          const redirectPath = `/${encodeURIComponent(formattedTopicName)}`;  // Redirect to the topic page
-          console.log("Redirecting to topic for problem:", redirectPath);
-          navigate(redirectPath);
-        }
-      }
-  
-      setSearchTopic(''); // Clear search bar after successful navigation
+      const formattedTopicName = matchData.topicName
+        .replace(/\s+/g, '-')
+        .replace(/&/g, 'and')
+        .toLowerCase();
+      navigate(`/${encodeURIComponent(formattedTopicName)}`);
+      setSearchTerm('');
+      setShowSuggestions(false);
     } else {
-      console.log("No match found - showing alert");
-      triggerAlert(); // Show alert if no match found
-      setSearchTopic('');
+      triggerAlert();
+      setSearchTerm('');
     }
   };
 
   const triggerAlert = () => {
-    console.log("Triggering alert"); // Check if this is called
     setShowAlert(true);
-    setTimeout(() => setShowAlert(false), 3000); // Hide alert after 3 seconds
+    setTimeout(() => setShowAlert(false), 3000);
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleSearch();
-    }
+    if (e.key === 'Enter') handleSearch();
   };
 
   const handleScrollToFooter = (e) => {
     e.preventDefault();
-    const footerElement = document.getElementById('contact-section');
-    if (footerElement) {
-      footerElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const clearSearch = () => {
+    setSearchTerm('');
+    setSuggestions([]);
+    setShowSuggestions(false);
   };
 
   return (
     <nav className="navbar">
       <div className="logo">
-        <Link to="/"><img src={logo} width={120} height='auto' alt="Logo" /></Link>
+        <Link to="/"><img src={logo} width={120} height='auto' alt="DSA Library Logo" /></Link>
       </div>
+      
       <ul className="nav-links">
         <li className="nav-item">
           <Link to="/">Home</Link>
@@ -118,61 +161,92 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/reminder">Reminder</Link>
         </li>
-        <li className="nav-item dropdown">
-          <Link to="#" onClick={handleScrollToFooter}>Contact Us</Link>
+        <li className="nav-item">
+          <Link to="#" onClick={handleScrollToFooter}>Contact</Link>
         </li>
       </ul>
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTopic}
-          onChange={(e) => setSearchTopic(e.target.value)}
-          onKeyDown={handleKeyDown} // Trigger search on Enter key press
-        />
+      
+      <div className="search-container" ref={searchRef}>
+        <div className={`search-bar ${isSearchFocused ? 'focused' : ''}`}>
+          <FiSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search topics or problems..."
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setShowSuggestions(true);
+            }}
+            onKeyDown={handleKeyDown}
+            onFocus={() => {
+              setIsSearchFocused(true);
+              if (searchTerm) setShowSuggestions(true);
+            }}
+            onBlur={() => setIsSearchFocused(false)}
+          />
+          {searchTerm && (
+            <button className="clear-search" onClick={clearSearch}>
+              <FiX />
+            </button>
+          )}
+        </div>
+        
+        {showSuggestions && suggestions.length > 0 && (
+          <div className="suggestions-dropdown">
+            {suggestions.map((item, index) => (
+              <div 
+                key={index} 
+                className="suggestion-item"
+                onClick={() => handleSearch(item)}
+              >
+                <div className="suggestion-header">
+                  <span className="suggestion-type">{item.type}</span>
+                  {item.difficulty && (
+                    <span className={`suggestion-difficulty ${item.difficulty.toLowerCase()}`}>
+                      {item.difficulty}
+                    </span>
+                  )}
+                </div>
+                <div className="suggestion-name">{item.name}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
+      
       {showAlert && (
         <div className="alert-box">
-          <i className="fas fa-exclamation-triangle alert-icon"></i>
-          <span>Topic not Found</span>
+          <span className="alert-message">Topic not found. Try another search term.</span>
         </div>
       )}
-      <div className="icons">
-        <div className="auth-buttons">
-          <SignedOut>
-            <SignInButton asChild>
-              <button
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                style={{
-                  padding: '10px 20px',
-                  backgroundColor: isHovered ? '#262626' : '#000000',
-                  color: 'white',
-                  fontFamily: 'sans-serif',
-                  fontSize: '21px',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  transition: 'background-color 0.3s ease',
-                }}
-              >
-                Sign In
-              </button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton
-              appearance={{
-                elements: {
-                  userButtonAvatarBox: {
-                    width: '45px',
-                    height: '45px',
-                  },
+      
+      <div className="auth-section">
+        <SignedOut>
+          <SignInButton>
+            <button 
+              className="signin-btn"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              Sign In
+            </button>
+          </SignInButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton
+            appearance={{
+              elements: {
+                userButtonAvatarBox: {
+                  width: '42px',
+                  height: '42px',
                 },
-              }}
-            />
-          </SignedIn>
-        </div>
+                userButtonPopoverCard: {
+                  backgroundColor: '#1a1a2e',
+                }
+              }
+            }}
+          />
+        </SignedIn>
       </div>
     </nav>
   );

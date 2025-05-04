@@ -3,11 +3,11 @@ import axios from 'axios';
 import { useUser } from '@clerk/clerk-react';
 import './Reminder.css';
 import DSAQuestions from '../../data/DSAQuestion.json';
+import { FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 
 const ReminderSection = () => {
     const [selectedTopic, setSelectedTopic] = useState('');
-    const [reminderSet, setReminderSet] = useState(false);
-    const [error, setError] = useState(''); // New state for error messages
+    const [notification, setNotification] = useState({ show: false, type: '', message: '' });
     const { user } = useUser();
     const topicsList = DSAQuestions.map(item => item.topicName);
 
@@ -16,59 +16,98 @@ const ReminderSection = () => {
     };
 
     const handleSubmit = async () => {
-        if (selectedTopic && user) {
-            const email = user.primaryEmailAddress.emailAddress; // Get user email from Clerk
-            console.log("User Email:", email); // Log the email being sent for verification
-    
-            try {
-                await axios.post('https://dsa-library.onrender.com/user/set-reminder', { email, topic: selectedTopic });
-    
-                console.log('Topic set successfully');
-                setSelectedTopic('');
-                setReminderSet(true);
-                setTimeout(() => setReminderSet(false), 3000);
-            } catch (error) {
-                console.error('Error setting reminder:', error);
-            }
-        } else {
-            setError('User not found or Topic not selected.');
+        if (!selectedTopic) {
+            showNotification('error', 'Please select a topic');
+            return;
+        }
+
+        if (!user) {
+            showNotification('error', 'Please sign in to set reminders');
+            return;
+        }
+
+        try {
+            const email = user.primaryEmailAddress.emailAddress;
+            await axios.post('https://dsa-library.onrender.com/user/set-reminder', { 
+                email, 
+                topic: selectedTopic 
+            });
+
+            showNotification('success', 'Reminder set successfully!');
             setSelectedTopic('');
-            setTimeout(() => setError(''), 3000);
+        } catch (error) {
+            console.error('Error setting reminder:', error);
+            showNotification('error', 'Failed to set reminder. Please try again.');
         }
     };
-    
-    
+
+    const showNotification = (type, message) => {
+        // Clear any existing notification first
+        setNotification({ show: false, type: '', message: '' });
+        
+        // Then set the new notification after a small delay
+        setTimeout(() => {
+            setNotification({ show: true, type, message });
+            
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                setNotification(prev => ({ ...prev, show: false }));
+            }, 3000);
+        }, 50);
+    };
 
     return (
-        <div className="reminder-section">
-            <h1 className="reminder-heading">Daily Reminder!!</h1>
-            <div className="motivational-message">
-                <p className="greeting">Hey there, Folks!</p>
-                <p className="message-body">
-                    We have handpicked a DSA question just for you, designed to sharpen your skills and keep you on track with your learning goals. 
-                </p>
-                <p className="message-body">
-                    Remember, consistency is key; every problem solved brings you one step closer to mastery.
-                </p>
-                <p className="closing">Happy coding!</p>
-            </div>
-            <div className="topic-selection">
-                <label htmlFor="topic" className="topic-label">Select a Topic to Set the Reminder:</label>
-                <div className="capsules-container">
-                    {topicsList.map((topic, index) => (
-                        <div
-                            key={index}
-                            className={`capsule ${selectedTopic === topic ? 'selected' : ''}`}
-                            onClick={() => handleTopicChange(topic)}
-                        >
-                            {topic}
-                        </div>
-                    ))}
+        <div className="reminder-container">
+            <div className="reminder-card">
+                <h1 className="reminder-title">Daily Practice Reminder</h1>
+                
+                <div className="motivation-section">
+                    <div className="motivation-content">
+                        <h2 className="greeting">Hello, Coder!</h2>
+                        <p className="motivation-text">
+                            We've curated a DSA question to help you stay consistent with your practice. 
+                            Regular coding is the key to mastering algorithms and data structures.
+                        </p>
+                        <p className="motivation-quote">
+                            "Consistency is what transforms average into excellence"
+                        </p>
+                    </div>
                 </div>
-                <button className="submit-button" onClick={handleSubmit}>Set Reminder</button>
-                {reminderSet && <div className="reminder-confirmation">Reminder set!</div>}
-                {error && <div className="error-message">{error}</div>} {/* Error message box */}
+
+                <div className="topic-selection">
+                    <h3 className="selection-title">Select Your Practice Topic</h3>
+                    <div className="topic-capsules">
+                        {topicsList.map((topic, index) => (
+                            <button
+                                key={index}
+                                className={`topic-capsule ${selectedTopic === topic ? 'selected' : ''}`}
+                                onClick={() => handleTopicChange(topic)}
+                            >
+                                {topic}
+                            </button>
+                        ))}
+                    </div>
+                    
+                    <button 
+                        className="submit-button"
+                        onClick={handleSubmit}
+                        disabled={!selectedTopic}
+                    >
+                        Set Daily Reminder
+                    </button>
+                </div>
             </div>
+
+            {notification.show && (
+    <div className={`notification ${notification.type}`}>
+        {notification.type === 'success' ? (
+            <FiCheckCircle className="notification-icon" />
+        ) : (
+            <FiAlertCircle className="notification-icon" />
+        )}
+        <span className="notification-message">{notification.message}</span>
+    </div>
+)}
         </div>
     );
 };

@@ -1,294 +1,250 @@
-.reminder-section {
-    border-radius: 40px;
-    padding: 31px;
-    background-color: black;
-    color: white;
+/* Reminder.css */
+:root {
+    --clr-primary: #1a1a2e;
+    --clr-secondary: #16213e;
+    --clr-accent: #0f3460;
+    --clr-highlight: #00b4d8;
+    --clr-text: #e6f7ff;
+    --clr-card-bg: rgba(10, 25, 47, 0.85);
+    --clr-success: #4BB543;
+    --clr-error: #FF3333;
+  }
+  
+  .reminder-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .reminder-card {
+    background: var(--clr-card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 180, 216, 0.2);
+  }
+  
+  .reminder-title {
+    color: var(--clr-highlight);
     text-align: center;
-    margin: 40px;
-}
-
-.reminder-heading {
-    font-size: 45px;
-    margin-bottom: 35px;
-}
-
-.motivational-message {
-    padding: 30px;
-    margin: 20px 0;
-    border-radius: 8px;
-    display: inline-block;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .reminder-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--clr-highlight);
+  }
+  
+  .motivation-section {
+    background: rgba(0, 180, 216, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--clr-highlight);
+  }
+  
+  .greeting {
+    color: var(--clr-highlight);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .motivation-text {
+    color: var(--clr-text);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .motivation-quote {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: right;
+    font-size: 1rem;
+  }
+  
+  .topic-selection {
+    margin-top: 2rem;
+  }
+  
+  .selection-title {
+    color: var(--clr-text);
     text-align: center;
-}
-
-.greeting {
-    font-size: 35px;
-    font-weight: bold;
-    margin-bottom: 44px; /* Increased margin */
-}
-
-.message-body {
-    font-size: 22px;
-    margin-bottom: 47px; /* Increased margin between sections */
-}
-
-.closing {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.topic-selection {
-    margin-top: 20px;
-}
-
-.topic-label {
-    display: block;
-    font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 34px;
-}
-
-.capsules-container {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .topic-capsules {
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
-    gap: 30px;
-}
-
-.capsule {
-    background-color: #333;
-    border-radius: 20px;
-    padding: 10px 20px;
+    margin-bottom: 2rem;
+  }
+  
+  .topic-capsule {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--clr-text);
+    border: none;
+    border-radius: 50px;
+    padding: 0.8rem 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+  }
+  
+  .topic-capsule:hover {
+    background: rgba(0, 180, 216, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .topic-capsule.selected {
+    background: var(--clr-highlight);
+    color: var(--clr-primary);
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
+  }
+  
+  .submit-button {
+    display: block;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--clr-highlight), #0096c7);
     color: white;
-}
-
-.capsule:hover {
-    background-color: #989898;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-.capsule.selected {
-    background-color: #3f3f3f;
-    color: rgb(155, 155, 155);
-    color: #b3b3b3;
-    color: #000000; /* Set the base text color */
-  text-shadow: 0 0 10px #ffffff, /* Adjust size and color for the glow */
-               0 0 20px #ffffff,
-               0 0 30px #ffffff,
-               0 0 40px #ffffff,
-               0 0 50px #ffffff;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-.submit-button {
-    margin-top: 40px;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    background-color: #323333;
-    color: white;
-    font-size: 16px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+  }
+  
+  .submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 180, 216, 0.4);
+  }
+  
+  .submit-button:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  .notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 350px;
 }
 
-.reminder-confirmation {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: green;
+.notification.success {
+    background: #4BB543;
     color: white;
-    border-radius: 5px;
-    text-align: center;
 }
 
-
-.submit-button:hover {
-    background-color: #737476;
-}
-
-.error-message {
-    margin-top: 10px;
+.notification.error {
+    background: #FF3333;
     color: white;
-    background-color: #f44336; /* Red background */
-    padding: 10px;
-    border-radius: 4px;
-    text-align: center;
 }
 
-.capsule.selected {
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Example glow effect */
+.notification-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
-.capsule:not(.selected) {
-    box-shadow: none; /* Clear glow when not selected */
+.notification-message {
+    font-size: 1rem;
+    font-weight: 500;
 }
-
-/* Responsive styles */
-@media (max-width: 1200px) {
-    .reminder-heading {
-        font-size: 36px;
+  
+  .notification-icon {
+    font-size: 1.2rem;
+  }
+  
+  @keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .notification {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        max-width: calc(100% - 2rem);
+    }
+    .reminder-card {
+      padding: 1.5rem;
     }
     
-    .motivational-message {
-        padding: 20px;
+    .reminder-title {
+      font-size: 1.8rem;
     }
-
-    .greeting {
-        font-size: 30px;
-        margin-bottom: 30px;
+    
+    .topic-capsules {
+      gap: 0.8rem;
     }
-
-    .message-body {
-        font-size: 20px;
-        margin-bottom: 35px;
+    
+    .topic-capsule {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
     }
-
-    .closing {
-        font-size: 26px;
-    }
-
-    .topic-label {
-        font-size: 22px;
-        margin-bottom: 28px;
-    }
-
-    .capsules-container {
-        gap: 20px;
-    }
-
+    
     .submit-button {
-        font-size: 14px;
-        padding: 8px 16px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
     }
-}
-
-@media (max-width: 992px) {
-    .reminder-section {
-        margin: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    .reminder-container {
+      padding: 1rem;
     }
-
-    .reminder-heading {
-        font-size: 30px;
+    
+    .reminder-card {
+      padding: 1.2rem;
     }
-
-    .motivational-message {
-        padding: 15px;
+    
+    .reminder-title {
+      font-size: 1.5rem;
     }
-
-    .greeting {
-        font-size: 26px;
-        margin-bottom: 25px;
+    
+    .motivation-text {
+      font-size: 1rem;
     }
-
-    .message-body {
-        font-size: 18px;
-        margin-bottom: 30px;
+    
+    .notification {
+      bottom: 1rem;
+      right: 1rem;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
     }
-
-    .closing {
-        font-size: 22px;
-    }
-
-    .topic-label {
-        font-size: 20px;
-        margin-bottom: 24px;
-    }
-
-    .capsules-container {
-        gap: 15px;
-    }
-
-    .submit-button {
-        font-size: 14px;
-        padding: 8px 14px;
-    }
-}
-
-@media (max-width: 768px) {
-    .reminder-section {
-        padding: 20px;
-        margin: 15px;
-    }
-
-    .reminder-heading {
-        font-size: 24px;
-    }
-
-    .motivational-message {
-        padding: 10px;
-    }
-
-    .greeting {
-        font-size: 22px;
-        margin-bottom: 20px;
-    }
-
-    .message-body {
-        font-size: 16px;
-        margin-bottom: 25px;
-    }
-
-    .closing {
-        font-size: 20px;
-    }
-
-    .topic-label {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-    .capsules-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .capsule {
-        padding: 8px 16px;
-    }
-
-    .submit-button {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
-}
-
-@media (max-width: 576px) {
-    .reminder-heading {
-        font-size: 20px;
-    }
-
-    .motivational-message {
-        padding: 8px;
-    }
-
-    .greeting {
-        font-size: 20px;
-        margin-bottom: 15px;
-    }
-
-    .message-body {
-        font-size: 14px;
-        margin-bottom: 20px;
-    }
-
-    .closing {
-        font-size: 18px;
-    }
-
-    .topic-label {
-        font-size: 16px;
-        margin-bottom: 16px;
-    }
-
-    .capsule {
-        padding: 6px 12px;
-    }
-
-    .submit-button {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-}
+  }
