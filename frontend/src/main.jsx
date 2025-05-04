@@ -8,7 +8,8 @@ import Layout from './Layout.jsx';
 import Card from './components/Card/Card.jsx';
 import ReminderSection from './components/Reminder/Reminder.jsx';
 import QuestionTable from './components/ QuestionTable/QuestionTable.jsx'; // Import the new component
-
+import Home from './components/Home/home.jsx';
+import Dashboard from './components/Dashboard/Dashboard.jsx'
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
@@ -22,14 +23,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',   // Default route
+        element: <Home />
+      },
+      {
+        path: 'topics',
         element: <Card />
       },
       {
-        path: 'reminder',  // Reminder page
+        path: 'reminder',
         element: <ReminderSection/>
       },
       {
-        path: ':topicName',  // Dynamic route for all topics
+        path: 'dashboard',
+        element: <Dashboard />
+      },
+      {
+        path: ':topicName',
         element: <QuestionTable />
       }
     ]

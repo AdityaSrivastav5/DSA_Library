@@ -1,0 +1,337 @@
+:root {
+    --clr-primary: #1a1a2e;
+    --clr-secondary: #16213e;
+    --clr-accent: #0f3460;
+    --clr-highlight: #00b4d8;
+    --clr-text: #e6f7ff;
+    --clr-card-bg: rgba(10, 25, 47, 0.85);
+    --clr-shadow: rgba(0, 180, 216, 0.3);
+    --clr-easy: #4CAF50;
+    --clr-medium: #FFC107;
+    --clr-hard: #F44336;
+  }
+  
+  .dashboard-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    color: var(--clr-text);
+  }
+  
+  .dashboard-blocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .block {
+    background: var(--clr-card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Profile Section */
+  .profile-section {
+    background: var(--clr-card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    grid-column: 1 / -1;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .avatar-container {
+    position: relative;
+  }
+  
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--clr-highlight);
+  }
+  
+  .profile-info h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .profile-email {
+    opacity: 0.8;
+    margin: 0.5rem 0;
+  }
+  
+  .profile-joined, .profile-active {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+  
+  /* Section Titles */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--clr-highlight);
+  }
+  
+  .section-icon {
+    font-size: 1.1rem;
+  }
+  
+  /* Progress Card */
+  .progress-section {
+    grid-column: span 2;
+  }
+  
+  .progress-card {
+    background: rgba(0, 180, 216, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 180, 216, 0.2);
+  }
+  
+  .progress-card-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  
+  .progress-metric {
+    text-align: center;
+  }
+  
+  .progress-number {
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+    color: var(--clr-highlight);
+  }
+  
+  .progress-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--clr-highlight);
+    border-radius: 4px;
+  }
+  
+  /* Difficulty Section */
+  .difficulty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .difficulty-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  
+  .difficulty-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .difficulty-title.easy {
+    color: var(--clr-easy);
+  }
+  
+  .difficulty-title.medium {
+    color: var(--clr-medium);
+  }
+  
+  .difficulty-title.hard {
+    color: var(--clr-hard);
+  }
+  
+  .difficulty-progress {
+    margin-bottom: 0.5rem;
+  }
+  
+  .difficulty-completed {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .difficulty-total {
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+  
+  .difficulty-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+  }
+  
+  .difficulty-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+  }
+  
+  .difficulty-percentage {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  /* Topics Section */
+  .topics-section {
+    grid-column: span 2;
+  }
+  
+  .topics-table-container {
+    overflow-x: auto;
+  }
+  
+  .topics-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .topics-table th {
+    text-align: left;
+    padding: 1rem;
+    background: rgba(0, 180, 216, 0.1);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .topics-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+  }
+  
+  .topic-name {
+    font-weight: 500;
+  }
+  
+  .topic-completed {
+    color: var(--clr-highlight);
+    font-weight: 600;
+  }
+  
+  .topic-total {
+    opacity: 0.7;
+  }
+  
+  .topic-progress {
+    min-width: 150px;
+  }
+  
+  .progress-container {
+    position: relative;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress-container .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--clr-highlight);
+  }
+  
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--clr-primary);
+  }
+  
+  /* Activity Section */
+  .activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .activity-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    align-items: center;
+  }
+  
+  .activity-icon {
+    color: var(--clr-highlight);
+    font-size: 1rem;
+  }
+  
+  .activity-content p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  
+  .activity-content strong {
+    color: var(--clr-highlight);
+  }
+  
+  .activity-time {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .dashboard-blocks {
+      grid-template-columns: 1fr;
+    }
+    
+    .progress-section,
+    .topics-section {
+      grid-column: span 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .progress-card-content {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .difficulty-grid {
+      grid-template-columns: 1fr;
+    }
+  }
