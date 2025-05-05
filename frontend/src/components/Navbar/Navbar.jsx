@@ -191,6 +191,11 @@ const Navbar = () => {
             Dashboard
           </Link>
         </li>
+        <li  className="nav-item">
+          <Link to="/grind75">
+            Grind 75
+          </Link>
+        </li>
         <li className="nav-item">
           <Link to="#" onClick={handleScrollToFooter}>
             Contact

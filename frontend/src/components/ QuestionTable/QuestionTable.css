@@ -104,6 +104,7 @@
   .difficulty {
     font-weight: 600;
     width: 120px;
+    /* border-radius: 100px; */
   }
   
   .difficulty-badge {

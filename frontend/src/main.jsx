@@ -10,6 +10,7 @@ import ReminderSection from './components/Reminder/Reminder.jsx';
 import QuestionTable from './components/ QuestionTable/QuestionTable.jsx'; // Import the new component
 import Home from './components/Home/home.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx'
+import Grind75 from './components/Grind75/Grind75.jsx';
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <Dashboard />
+      },
+      {
+        path: 'grind75',
+        element: <Grind75 />  // Add this new route
       },
       {
         path: ':topicName',

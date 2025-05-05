@@ -371,24 +371,24 @@
     font-size: 1.2rem;
   }
   
-  .difficulty {
+  .difficultye {
     padding: 0.3rem 0.8rem;
     border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 600;
   }
   
-  .difficulty.easy {
+  .difficultye.easy {
     background: rgba(76, 175, 80, 0.2);
     color: var(--clr-easy);
   }
   
-  .difficulty.medium {
+  .difficultye.medium {
     background: rgba(255, 193, 7, 0.2);
     color: var(--clr-medium);
   }
   
-  .difficulty.hard {
+  .difficultye.hard {
     background: rgba(244, 67, 54, 0.2);
     color: var(--clr-hard);
   }

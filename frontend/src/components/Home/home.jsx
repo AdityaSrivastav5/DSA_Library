@@ -5,8 +5,33 @@ import {
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import './Home.css';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
+  const [grind75Questions, setGrind75Questions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch Grind 75 questions from your API
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await fetch('http://localhost:5003/user/grind75-questions');
+        if (!response.ok) {
+          throw new Error('Failed to fetch questions');
+        }
+        const data = await response.json();
+        // Take first 6 questions for the home page preview
+        setGrind75Questions(data.slice(0, 6));
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchQuestions();
+  }, []);
   const testimonials = [
     {
       id: 1,
@@ -57,14 +82,14 @@ const Home = () => {
     }
   ];
 
-  const grind75Questions = [
-    { id: 1, title: "Two Sum", difficulty: "Easy", pattern: "Hash Map" },
-    { id: 2, title: "Valid Parentheses", difficulty: "Easy", pattern: "Stack" },
-    { id: 3, title: "Merge Intervals", difficulty: "Medium", pattern: "Intervals" },
-    { id: 4, title: "Course Schedule", difficulty: "Medium", pattern: "Topological Sort" },
-    { id: 5, title: "Word Search II", difficulty: "Hard", pattern: "Trie + Backtracking" },
-    { id: 6, title: "Trapping Rain Water", difficulty: "Hard", pattern: "Two Pointers" }
-  ];
+  // const grind75Questions = [
+  //   { id: 1, title: "Two Sum", difficulty: "Easy", pattern: "Hash Map" },
+  //   { id: 2, title: "Valid Parentheses", difficulty: "Easy", pattern: "Stack" },
+  //   { id: 3, title: "Merge Intervals", difficulty: "Medium", pattern: "Intervals" },
+  //   { id: 4, title: "Course Schedule", difficulty: "Medium", pattern: "Topological Sort" },
+  //   { id: 5, title: "Word Search II", difficulty: "Hard", pattern: "Trie + Backtracking" },
+  //   { id: 6, title: "Trapping Rain Water", difficulty: "Hard", pattern: "Two Pointers" }
+  // ];
 
   const recentBlogs = [
     { 
@@ -208,35 +233,49 @@ const Home = () => {
           <div className="divider"></div>
           <p className="section-subtitle">The most essential questions to practice for coding interviews</p>
         </div>
-        <div className="questions-grid">
-          {grind75Questions.map((question) => (
-            <motion.div 
-              className="question-card"
-              key={question.id}
-              whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(0, 180, 216, 0.3)" }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="question-header">
-                <h3>{question.title}</h3>
-                <span className={`difficulty ${question.difficulty.toLowerCase()}`}>
-                  {question.difficulty}
-                </span>
-              </div>
-              <div className="question-pattern">
-                <FaCode className="pattern-icon" />
-                <span>{question.pattern}</span>
-              </div>
-              <Link to="/" className="solve-button">
-                Solve Problem
+
+        {loading ? (
+          <div className="loading">Loading questions...</div>
+        ) : error ? (
+          <div className="error">Error: {error}</div>
+        ) : (
+          <>
+            <div className="questions-grid">
+              {grind75Questions.map((question) => (
+                <motion.div 
+                  className="question-card"
+                  key={question._id}
+                  whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(0, 180, 216, 0.3)" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="question-header">
+                    <h3>{question.name}</h3>
+                    <span className={`difficultye ${question.level.toLowerCase()}`}>
+                      {question.level}
+                    </span>
+                  </div>
+                  <div className="question-pattern">
+                    <FaCode className="pattern-icon" />
+                    <span>{question.topics[0].join(', ')}</span>
+                  </div>
+                  <a 
+                    href={question.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="solve-button"
+                  >
+                    Solve Problem
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+            <div className="section-footer">
+              <Link to="/grind75" className="view-all-button">
+                View All 75 Questions →
               </Link>
-            </motion.div>
-          ))}
-        </div>
-        <div className="section-footer">
-          <Link to="/grind75" className="view-all-button">
-            View All 75 Questions →
-          </Link>
-        </div>
+            </div>
+          </>
+        )}
       </section>
 
       {/* Features Section */}

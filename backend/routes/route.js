@@ -7,12 +7,15 @@ const router = express.Router();
 const Feedback = require('../models/feedbackModel.js')
 const setReminder = require('../controller/setReminder.js')
 
+const {getAllGrind75Questions} = require('../controller/grind75Controller.js')
 
 router.post("/signup", signup);
 
 router.post("/add-user", addClerkUserToDB);
 
 router.post("/set-reminder",setReminder);
+
+router.get("/grind75-questions", getAllGrind75Questions);
 
 router.post('/feedback', async (req, res) => {
     const { name, email, feedback } = req.body;
@@ -41,5 +44,6 @@ router.post("/send", async (req, res) => {
         res.status(500).send('Error sending reminders: ' + error.message);
     }
 });
+
 
 module.exports = router;
