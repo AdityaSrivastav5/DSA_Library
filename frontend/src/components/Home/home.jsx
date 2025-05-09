@@ -12,7 +12,7 @@ import {
   FaPython, FaJava 
 } from "react-icons/fa";
 import { motion } from "framer-motion";
-import "./Home.css";
+import "./home.css";
 import { useState, useEffect } from "react";
 import { FiCode, FiTerminal, FiClock } from 'react-icons/fi';
 import { SiCplusplus } from 'react-icons/si';
