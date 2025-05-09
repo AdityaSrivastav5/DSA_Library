@@ -14,7 +14,7 @@ const Grind75 = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch('http://localhost:5003/user/grind75-questions');
+        const response = await fetch('https://dsa-library.onrender.com/user/grind75-questions');
         if (!response.ok) {
             throw new Error('Failed to fetch questions');
         }

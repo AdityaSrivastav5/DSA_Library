@@ -27,7 +27,7 @@ const Home = () => {
     const fetchQuestions = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5003/user/grind75-questions"
+          "'https://dsa-library.onrender.com/user/grind75-questions"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch questions");
