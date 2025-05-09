@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useUser } from '@clerk/clerk-react';
 import './Reminder.css';
 import DSAQuestions from '../../data/DSAQuestion.json';
-import { FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
+import { FiCheckCircle, FiAlertCircle, FiClock, FiCalendar } from 'react-icons/fi';
 
 const ReminderSection = () => {
     const [selectedTopic, setSelectedTopic] = useState('');
@@ -42,14 +42,11 @@ const ReminderSection = () => {
     };
 
     const showNotification = (type, message) => {
-        // Clear any existing notification first
         setNotification({ show: false, type: '', message: '' });
         
-        // Then set the new notification after a small delay
         setTimeout(() => {
             setNotification({ show: true, type, message });
             
-            // Auto-hide after 3 seconds
             setTimeout(() => {
                 setNotification(prev => ({ ...prev, show: false }));
             }, 3000);
@@ -59,23 +56,38 @@ const ReminderSection = () => {
     return (
         <div className="reminder-container">
             <div className="reminder-card">
-                <h1 className="reminder-title">Daily Practice Reminder</h1>
+                <div className="card-header">
+                    <h1 className="reminder-title">Daily Practice Reminder</h1>
+                    <p className="reminder-subtitle">Stay consistent with your DSA practice</p>
+                </div>
                 
                 <div className="motivation-section">
+                    <div className="motivation-icon">
+                        <FiClock size={24} />
+                    </div>
                     <div className="motivation-content">
-                        <h2 className="greeting">Hello, Coder!</h2>
+                        <h2 className="greeting">Hello, {user?.firstName || 'Coder'}!</h2>
                         <p className="motivation-text">
-                            We've curated a DSA question to help you stay consistent with your practice. 
-                            Regular coding is the key to mastering algorithms and data structures.
+                            We've curated high-quality DSA questions to help you stay consistent. 
+                            Regular practice is the key to mastering algorithms and data structures.
                         </p>
-                        <p className="motivation-quote">
-                            "Consistency is what transforms average into excellence"
-                        </p>
+                        <div className="stats-container">
+                            <div className="stat-item">
+                                <FiCalendar className="stat-icon" />
+                                <span>Daily Questions</span>
+                            </div>
+                            <div className="stat-item">
+                                <FiCheckCircle className="stat-icon" />
+                                <span>Personalized Reminders</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div className="topic-selection">
                     <h3 className="selection-title">Select Your Practice Topic</h3>
+                    <p className="selection-subtitle">Choose a topic you want to focus on</p>
+                    
                     <div className="topic-capsules">
                         {topicsList.map((topic, index) => (
                             <button
@@ -99,15 +111,15 @@ const ReminderSection = () => {
             </div>
 
             {notification.show && (
-    <div className={`notification ${notification.type}`}>
-        {notification.type === 'success' ? (
-            <FiCheckCircle className="notification-icon" />
-        ) : (
-            <FiAlertCircle className="notification-icon" />
-        )}
-        <span className="notification-message">{notification.message}</span>
-    </div>
-)}
+                <div className={`notification ${notification.type}`}>
+                    {notification.type === 'success' ? (
+                        <FiCheckCircle className="notification-icon" />
+                    ) : (
+                        <FiAlertCircle className="notification-icon" />
+                    )}
+                    <span className="notification-message">{notification.message}</span>
+                </div>
+            )}
         </div>
     );
 };

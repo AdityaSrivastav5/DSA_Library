@@ -3,169 +3,226 @@
     --clr-primary: #1a1a2e;
     --clr-secondary: #16213e;
     --clr-accent: #0f3460;
-    --clr-highlight: #00b4d8;
-    --clr-text: #e6f7ff;
-    --clr-card-bg: rgba(10, 25, 47, 0.85);
-    --clr-success: #4BB543;
-    --clr-error: #FF3333;
-  }
-  
-  .reminder-container {
+    --clr-highlight: #4361ee;
+    --clr-highlight-light: #4895ef;
+    --clr-text: #f8f9fa;
+    --clr-text-secondary: #adb5bd;
+    --clr-card-bg: #2b2d42;
+    --clr-card-bg-light: #3a3b5a;
+    --clr-success: #4cc9f0;
+    --clr-error: #f72585;
+    --clr-border: rgba(255, 255, 255, 0.1);
+    --clr-shadow: rgba(0, 0, 0, 0.2);
+    --border-radius: 12px;
+    --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.reminder-container {
     display: flex;
     justify-content: center;
     padding: 2rem;
-  }
-  
-  .reminder-card {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.reminder-card {
     background: var(--clr-card-bg);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     padding: 2.5rem;
     width: 100%;
     max-width: 900px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 180, 216, 0.2);
-  }
-  
-  .reminder-title {
-    color: var(--clr-highlight);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--clr-border);
+    backdrop-filter: blur(8px);
+}
+
+.card-header {
     text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    position: relative;
-  }
-  
-  .reminder-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: var(--clr-highlight);
-  }
-  
-  .motivation-section {
-    background: rgba(0, 180, 216, 0.1);
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border-left: 4px solid var(--clr-highlight);
-  }
-  
-  .greeting {
-    color: var(--clr-highlight);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .motivation-text {
+    margin-bottom: 2.5rem;
+}
+
+.reminder-title {
     color: var(--clr-text);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-  }
-  
-  .motivation-quote {
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.7);
-    text-align: right;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--clr-highlight), var(--clr-highlight-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.reminder-subtitle {
+    color: var(--clr-text-secondary);
     font-size: 1rem;
-  }
-  
-  .topic-selection {
-    margin-top: 2rem;
-  }
-  
-  .selection-title {
+    font-weight: 400;
+}
+
+.motivation-section {
+    display: flex;
+    gap: 1.5rem;
+    background: var(--clr-card-bg-light);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--clr-border);
+}
+
+.motivation-icon {
+    background: rgba(67, 97, 238, 0.1);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-highlight);
+    flex-shrink: 0;
+}
+
+.motivation-content {
+    flex: 1;
+}
+
+.greeting {
     color: var(--clr-text);
-    text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.motivation-text {
+    color: var(--clr-text-secondary);
+    line-height: 1.6;
     margin-bottom: 1.5rem;
-  }
-  
-  .topic-capsules {
+    font-size: 1rem;
+}
+
+.stats-container {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--clr-text-secondary);
+    font-size: 0.9rem;
+}
+
+.stat-icon {
+    color: var(--clr-highlight);
+}
+
+.topic-selection {
+    margin-top: 1rem;
+}
+
+.selection-title {
+    color: var(--clr-text);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.selection-subtitle {
+    color: var(--clr-text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.topic-capsules {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.75rem;
     margin-bottom: 2rem;
-  }
-  
-  .topic-capsule {
-    background: rgba(255, 255, 255, 0.1);
+}
+
+.topic-capsule {
+    background: rgba(255, 255, 255, 0.05);
     color: var(--clr-text);
-    border: none;
+    border: 1px solid var(--clr-border);
     border-radius: 50px;
-    padding: 0.8rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.95rem;
-  }
-  
-  .topic-capsule:hover {
-    background: rgba(0, 180, 216, 0.2);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.topic-capsule:hover {
+    background: rgba(67, 97, 238, 0.1);
+    border-color: var(--clr-highlight);
     transform: translateY(-2px);
-  }
-  
-  .topic-capsule.selected {
+}
+
+.topic-capsule.selected {
     background: var(--clr-highlight);
-    color: var(--clr-primary);
+    color: white;
     font-weight: 600;
-    box-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
-  }
-  
-  .submit-button {
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+    border-color: transparent;
+}
+
+.submit-button {
     display: block;
     margin: 0 auto;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--clr-highlight), #0096c7);
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--clr-highlight), var(--clr-highlight-light));
     color: white;
     border: none;
     border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
-  }
-  
-  .submit-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 180, 216, 0.4);
-  }
-  
-  .submit-button:disabled {
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+}
+
+.submit-button:disabled {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.3);
     cursor: not-allowed;
     box-shadow: none;
-  }
-  
-  .notification {
+    transform: none;
+}
+
+.notification {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
     padding: 1rem 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     display: flex;
     align-items: center;
     gap: 0.8rem;
     animation: slideIn 0.3s ease-out;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     max-width: 350px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .notification.success {
-    background: #4BB543;
-    color: white;
+    background: rgba(76, 201, 240, 0.15);
+    color: var(--clr-text);
+    border-color: rgba(76, 201, 240, 0.3);
 }
 
 .notification.error {
-    background: #FF3333;
-    color: white;
+    background: rgba(247, 37, 133, 0.15);
+    color: var(--clr-text);
+    border-color: rgba(247, 37, 133, 0.3);
 }
 
 .notification-icon {
@@ -173,16 +230,20 @@
     flex-shrink: 0;
 }
 
+.notification.success .notification-icon {
+    color: var(--clr-success);
+}
+
+.notification.error .notification-icon {
+    color: var(--clr-error);
+}
+
 .notification-message {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
 }
-  
-  .notification-icon {
-    font-size: 1.2rem;
-  }
-  
-  @keyframes slideIn {
+
+@keyframes slideIn {
     from {
         transform: translateX(100%);
         opacity: 0;
@@ -192,59 +253,55 @@
         opacity: 1;
     }
 }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .reminder-card {
+        padding: 1.75rem;
+    }
+    
+    .motivation-section {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+    
+    .motivation-icon {
+        margin-bottom: 1rem;
+    }
+    
+    .stats-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
     .notification {
         bottom: 1rem;
         right: 1rem;
         left: 1rem;
         max-width: calc(100% - 2rem);
     }
+}
+
+@media (max-width: 480px) {
+    .reminder-container {
+        padding: 1rem;
+    }
+    
     .reminder-card {
-      padding: 1.5rem;
+        padding: 1.5rem;
     }
     
     .reminder-title {
-      font-size: 1.8rem;
-    }
-    
-    .topic-capsules {
-      gap: 0.8rem;
+        font-size: 1.75rem;
     }
     
     .topic-capsule {
-      padding: 0.6rem 1.2rem;
-      font-size: 0.85rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
     }
     
     .submit-button {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
+        padding: 0.9rem 2rem;
+        width: 100%;
     }
-  }
-  
-  @media (max-width: 480px) {
-    .reminder-container {
-      padding: 1rem;
-    }
-    
-    .reminder-card {
-      padding: 1.2rem;
-    }
-    
-    .reminder-title {
-      font-size: 1.5rem;
-    }
-    
-    .motivation-text {
-      font-size: 1rem;
-    }
-    
-    .notification {
-      bottom: 1rem;
-      right: 1rem;
-      padding: 0.8rem 1rem;
-      font-size: 0.9rem;
-    }
-  }
+}

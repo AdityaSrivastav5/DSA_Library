@@ -43,7 +43,7 @@
     margin-bottom: 2rem;
   }
   
-  .table-header {
+  .table-headers {
     display: grid;
     grid-template-columns: 50px 2fr 1fr 2fr 100px;
     background: rgba(0, 180, 216, 0.2);
@@ -153,7 +153,7 @@
   
   /* Responsive styles */
   @media (max-width: 768px) {
-    .table-header, .table-row {
+    .table-headers, .table-row {
       grid-template-columns: 40px 1fr 80px;
     }
     

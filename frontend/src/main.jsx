@@ -11,6 +11,8 @@ import QuestionTable from './components/ QuestionTable/QuestionTable.jsx'; // Im
 import Home from './components/Home/home.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx'
 import Grind75 from './components/Grind75/Grind75.jsx';
+import Compiler from './components/Compiler/Compiler.jsx';
+import MonacoIDE from './components/MonacoIDE/MonacoIDE.jsx';
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: ':topicName',
         element: <QuestionTable />
+      },
+      {
+        path: 'compiler',
+        element: <Compiler />
+      },
+      {
+        path: 'ide',
+        element: <MonacoIDE />
       }
     ]
   }

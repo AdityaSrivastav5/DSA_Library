@@ -50,7 +50,7 @@ const Grind75 = () => {
       </div>
 
       <div className="questions-table">
-        <div className="table-header">
+        <div className="table-headers">
           <div className="header-item">#</div>
           <div className="header-item">Problem</div>
           <div className="header-item">Difficulty</div>
