@@ -1,4 +1,4 @@
-const Grind75Question = require('../models/grind75Model.js');
+const Grind75Question = require("../models/grind75Model")
 
 // Make sure this is a function
 const getAllGrind75Questions = async (req, res) => {
