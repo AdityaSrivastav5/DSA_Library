@@ -7,4 +7,4 @@ const grind75QuestionSchema = new mongoose.Schema({
   topics: [{ type: [String], required: true }]
 });
 
-module.exports = mongoose.model('Grind75Question', grind75QuestionSchema);
+module.exports = mongoose.model('Grind75', grind75QuestionSchema);
