@@ -6,9 +6,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ClerkProvider } from '@clerk/clerk-react';
 import Layout from './Layout.jsx';
 import Card from './components/Card/Card.jsx';
-import Reminder from './components/Reminder/Reminder.jsx';
-
-// Import your publishable key
+import ReminderSection from './components/Reminder/Reminder.jsx';
+import QuestionTable from './components/ QuestionTable/QuestionTable.jsx'; // Import the new component
+import Home from './components/Home/home.jsx';
+import Dashboard from './components/Dashboard/Dashboard.jsx'
+import Grind75 from './components/Grind75/Grind75.jsx';
+import Compiler from './components/Compiler/Compiler.jsx';
+import MonacoIDE from './components/MonacoIDE/MonacoIDE.jsx';
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
@@ -21,12 +25,36 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '',
+        path: '',   // Default route
+        element: <Home />
+      },
+      {
+        path: 'topics',
         element: <Card />
       },
       {
         path: 'reminder',
-        element: <Reminder />
+        element: <ReminderSection/>
+      },
+      {
+        path: 'dashboard',
+        element: <Dashboard />
+      },
+      {
+        path: 'grind75',
+        element: <Grind75 />  // Add this new route
+      },
+      {
+        path: ':topicName',
+        element: <QuestionTable />
+      },
+      {
+        path: 'compiler',
+        element: <Compiler />
+      },
+      {
+        path: 'ide',
+        element: <MonacoIDE />
       }
     ]
   }

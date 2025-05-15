@@ -1,0 +1,288 @@
+    [
+        {
+            "topicName": "Array",
+            "position": 0,
+            "started": false,
+            "doneQuestions": 0,
+            "questions": [
+                {
+                    "Topic": "Array",
+                    "Problem": "Reverse the array",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://www.geeksforgeeks.org/write-a-program-to-reverse-an-array-or-string/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/reverse-the-array_1262298?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Find the maximum and minimum element in an array",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/sum-of-max-and-min_1081476?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Find the 'Kth' max and min element of an array",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/kth-smallest-element/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/kth-smallest-and-largest-element-of-array_1115488?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Given an array which consists of only 0, 1, and 2. Sort the array without using any sorting algorithm",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/sort-0-1-2_631055?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Move all the negative elements to one side of the array",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/move-all-negative-elements-to-end1813/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/move-all-negative-numbers-to-beginning-and-positive-to-end_1112620?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Find the Union and Intersection of the two sorted arrays",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/union-of-two-arrays/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/find-similarities-between-two-arrays_1229070?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Write a program to cyclically rotate an array by one",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/rotate-array_1230543?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Find the Largest sum contiguous Subarray [V. IMP]",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/maximum-subarray-sum_630526?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Minimize the maximum difference between heights [V.IMP]",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/minimize-the-heights3351/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/minimize-the-difference_3208652?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Minimum number of Jumps to reach the end of an array",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/minimum-jumps_1062693?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Find the duplicate in an array of N+1 Integers",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://leetcode.com/problems/find-the-duplicate-number/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/duplicate-in-array_893397?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Merge 2 sorted arrays without using Extra space",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1",
+                    "URL2": ""
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Kadane's Algorithm [V.V.V.V.V IMP]",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0",
+                    "URL2": ""
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Merge Intervals",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://leetcode.com/problems/merge-intervals/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/merge-intervals_699917?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Next Permutation",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://leetcode.com/problems/next-permutation/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/next-permutaion_893046?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Count Inversion",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/inversion-of-array/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/count-inversions_615?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Best time to buy and Sell stock",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/stocks-are-profitable_893405?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Find all pairs on an integer array whose sum is equal to a given number",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/count-pairs-with-given-sum_1171154?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Find common elements In 3 sorted arrays",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/common-elements1132/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/common-elements-in-three-sorted-arrays_1112622?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Array",
+                    "Problem": "Rearrange the array in alternating positive and negative items with O(1) extra space",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/array-of-alternate-ve-and-ve-nos1401/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/alternate-positive-and-negative-numbers_893099?topList=love-babbar-dsa-sheet-problems"
+                }
+            ]
+        },
+        {
+            "topicName": "Matrix",
+            "position": 1,
+            "started": false,
+            "doneQuestions": 0,
+            "questions": [
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Spiral traversal on a Matrix",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/spiral-matrix_840698?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Search an element in a matrix",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://leetcode.com/problems/search-a-2d-matrix/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/search-in-a-row-wise-and-column-wise-sorted-matrix_839811?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Find median in a row wise sorted matrix",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/median-in-matrix_981178?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Find row with maximum no. of 1's",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/row-with-maximum-1-s_1112656?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Print elements in sorted order using row-column wise sorted matrix",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/sorted-matrix/0",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/sorted-matrix_758931?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Maximum size rectangle",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/max-rectangle/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/maximum-size-rectangle-sub-matrix-with-all-1-s_893017?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Find a specific pair in matrix",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://www.geeksforgeeks.org/find-a-specific-pair-in-matrix/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/find-a-specific-pair-in-the-matrix_1115467?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Rotate matrix by 90 degrees",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://www.geeksforgeeks.org/rotate-a-matrix-by-90-degree-in-clockwise-direction-without-using-any-extra-space/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/inplace-rotate-matrix-90-degree_839734?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Kth smallest element in a row-column wise sorted matrix",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://practice.geeksforgeeks.org/problems/kth-element-in-matrix/1",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/kth-minimum-floor_1115470?topList=love-babbar-dsa-sheet-problems"
+                },
+                {
+                    "Topic": "Matrix",
+                    "Problem": "Common elements in all rows of a given matrix",
+                    "Done": false,
+                    "Bookmark": false,
+                    "Notes": "",
+                    "URL": "https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/",
+                    "URL2": "https://www.codingninjas.com/codestudio/problems/common-elements-present-in-all-rows-of-a-matrix_1118111?topList=love-babbar-dsa-sheet-problems"
+                }
+            ]
+        }
+    ]

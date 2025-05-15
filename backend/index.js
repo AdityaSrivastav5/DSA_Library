@@ -10,6 +10,9 @@ const app = express();
 const PORT = process.env.PORT || 5003;
 
 // Middleware
+const cors = require('cors');
+app.use(cors()); // Allow all origins (for testing; adjust for production)
+
 app.use(bodyParser.json());
 
 // Database connection
@@ -28,14 +31,16 @@ const transporter = nodemailer.createTransport({
 app.use("/user", userRoutes);
 
 // Cron job to send reminders daily at 10:32 AM
-cron.schedule('32 11 * * *', async () => {
+// Cron job to send reminders daily at 10:32 AM
+cron.schedule('35 14 * * *', async () => {
     try {
-        const { sendReminders } = require('./controller/user.js');
+        const { sendReminders } = require('./controller/reminderController.js'); // Correct path
         await sendReminders(transporter);
     } catch (error) {
         console.error('Error sending reminders:', error);
     }
 });
+
 
 // Start server
 app.listen(PORT, () => {
