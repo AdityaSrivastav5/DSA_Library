@@ -1,52 +1,45 @@
 // src/components/Grind75/Grind75.jsx
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
+import { useQuery,keepPreviousData, } from '@tanstack/react-query';
 import './Grind75.css';
+import axios from 'axios';
 
 const Grind75 = () => {
-  const [questions, setQuestions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const questionsPerPage = 10;
 
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await fetch("https://dsa-library.onrender.com/user/grind75-questions");
-        if (!response.ok) {
-            throw new Error('Failed to fetch questions');
-        }
-        const data = await response.json();
-        setQuestions(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['dsaProblems', currentPage], 
+    queryFn: async () => {
+      const response = await axios.get(
+        `https://dsa-library.onrender.com/user/grind75-questions?page=${currentPage}&limit=${questionsPerPage}`
+        //`http://localhost:5003/user/grind75-questions?page=${currentPage}&limit=${questionsPerPage}`
+      );
+      if (!response.data) {
+        throw new Error('Network response was not ok');
       }
-    };
-
-    fetchQuestions();
-  }, []);
-
-  // Get current questions
-  const indexOfLastQuestion = currentPage * questionsPerPage;
-  const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
-  const currentQuestions = questions.slice(indexOfFirstQuestion, indexOfLastQuestion);
-  const totalPages = Math.ceil(questions.length / questionsPerPage);
+      return response.data;
+    },
+    placeholderData: keepPreviousData,
+  });
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= data?.totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
 
-  if (loading) return <div className="loading">Loading questions...</div>;
-  if (error) return <div className="error">Error: {error}</div>;
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error: {error.message || "Something went wrong!"}</p>;
 
   return (
     <div className="grind75-container">
       <div className="header">
         <h1>Grind 75 Questions</h1>
         <p>The most essential questions to practice for coding interviews</p>
+        <p>Total Questions: {data?.totalQuestions || 0}</p>
       </div>
 
       <div className="questions-table">
@@ -58,9 +51,9 @@ const Grind75 = () => {
           <div className="header-item">Link</div>
         </div>
 
-        {currentQuestions.map((question, index) => (
+        {data?.questions?.map((question, index) => (
           <div className="table-row" key={question._id}>
-            <div className="row-item serial">{indexOfFirstQuestion + index + 1}</div>
+            <div className="row-item serial">{(currentPage - 1) * questionsPerPage + index + 1}</div>
             <div className="row-item name">{question.name}</div>
             <div className={`row-item difficulty ${question.level.toLowerCase()}`}>
               {question.level}
@@ -85,25 +78,26 @@ const Grind75 = () => {
       {/* Pagination */}
       <div className="pagination">
         <button 
-          onClick={() => paginate(currentPage > 1 ? currentPage - 1 : 1)}
-          disabled={currentPage === 1}
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1 || isLoading}
         >
           Previous
         </button>
         
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
+        {Array.from({ length: data?.totalPages || 0 }, (_, i) => i + 1).map(number => (
           <button
             key={number}
             onClick={() => paginate(number)}
             className={currentPage === number ? 'active' : ''}
+            disabled={isLoading}
           >
             {number}
           </button>
         ))}
         
         <button 
-          onClick={() => paginate(currentPage < totalPages ? currentPage + 1 : totalPages)}
-          disabled={currentPage === totalPages}
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === data?.totalPages || isLoading}
         >
           Next
         </button>

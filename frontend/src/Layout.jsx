@@ -7,13 +7,8 @@ const Layout = () => {
   return (
     <>
       <Navbar />
-      
       <Outlet />
       <Footer />
-<<<<<<< HEAD
-      <h1>hi</h1>
-=======
->>>>>>> origin
     </>
   );
 };

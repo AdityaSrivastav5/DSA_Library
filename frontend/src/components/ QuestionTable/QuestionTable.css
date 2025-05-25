@@ -30,7 +30,7 @@
     display: inline-block;
   }
   
-  .topic-title::after {
+  /* .topic-title::after {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -38,7 +38,7 @@
     width: 100%;
     height: 3px;
     background: var(--clr-highlight);
-  }
+  } */
   
   .topic-description {
     color: rgba(255, 255, 255, 0.8);
