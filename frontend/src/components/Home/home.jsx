@@ -9,41 +9,58 @@ import {
   FaBlog,
   FaNewspaper,
   FaFire,
-  FaPython, FaJava 
+  FaPython,
+  FaJava,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import "./home.css";
 import { useState, useEffect } from "react";
-import { FiCode, FiTerminal, FiClock } from 'react-icons/fi';
-import { SiCplusplus } from 'react-icons/si';
+import { FiCode, FiTerminal, FiClock } from "react-icons/fi";
+import { SiCplusplus } from "react-icons/si";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import axios from "axios";
 
 const Home = () => {
   const [grind75Questions, setGrind75Questions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  // Fetch Grind 75 questions from your API
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await fetch(
-          "https://dsa-library.onrender.com/user/grind75-questions"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch questions");
-        }
-        const data = await response.json();
-        // Take first 6 questions for the home page preview
-        setGrind75Questions(data.slice(0, 6));
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+  //const [error, setError] = useState(null);
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["grind75Questions"],
+    queryFn: async () => {
+      const response = await axios.get(
+        "https://dsa-library.onrender.com/user/grind75-questions?page=3&limit=6"
+      );
+      if (!response.data) {
+        throw new Error("Network response was not ok");
       }
-    };
+      return response.data;
+    },
+    placeholderData: keepPreviousData,
+  });
+  // Fetch Grind 75 questions from your API
+  // useEffect(() => {
+  //   const fetchQuestions = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://dsa-library.onrender.com/user/grind75-questions"
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch questions");
+  //       }
+  //       const data = await response.json();
+  //       // Take first 6 questions for the home page preview
+  //       setGrind75Questions(data.slice(0, 6));
+  //       setLoading(false);
+  //     } catch (err) {
+  //       setError(err.message);
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchQuestions();
-  }, []);
+  //   fetchQuestions();
+  // }, []);
   const testimonials = [
     {
       id: 1,
@@ -241,6 +258,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       {/* Grind 75 Section */}
       <section className="grind-section">
         <div className="section-header">
@@ -254,45 +272,49 @@ const Home = () => {
           </p>
         </div>
 
-        {loading ? (
+        {isLoading ? (
           <div className="loading">Loading questions...</div>
-        ) : error ? (
-          <div className="error">Error: {error}</div>
+        ) : isError ? (
+          <div className="error">Error: {error.message}</div>
         ) : (
           <>
             <div className="questions-grid">
-              {grind75Questions.map((question) => (
-                <motion.div
-                  className="question-card"
-                  key={question._id}
-                  whileHover={{
-                    y: -5,
-                    boxShadow: "0 10px 20px rgba(0, 180, 216, 0.3)",
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="question-header">
-                    <h3>{question.name}</h3>
-                    <span
-                      className={`difficultye ${question.level.toLowerCase()}`}
-                    >
-                      {question.level}
-                    </span>
-                  </div>
-                  <div className="question-pattern">
-                    <FaCode className="pattern-icon" />
-                    <span>{question.topics[0].join(", ")}</span>
-                  </div>
-                  <a
-                    href={question.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="solve-button"
+              {data.questions.slice(0, 6).map(
+                (
+                  question // Only show first 6 questions
+                ) => (
+                  <motion.div
+                    className="question-card"
+                    key={question._id}
+                    whileHover={{
+                      y: -5,
+                      boxShadow: "0 10px 20px rgba(0, 180, 216, 0.3)",
+                    }}
+                    transition={{ duration: 0.2 }}
                   >
-                    Solve Problem
-                  </a>
-                </motion.div>
-              ))}
+                    <div className="question-header">
+                      <h3>{question.name}</h3>
+                      <span
+                        className={`difficulty ${question.level.toLowerCase()}`}
+                      >
+                        {question.level}
+                      </span>
+                    </div>
+                    <div className="question-pattern">
+                      <FaCode className="pattern-icon" />
+                      <span>{question.topics[0].join(", ")}</span>
+                    </div>
+                    <a
+                      href={question.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="solve-button"
+                    >
+                      Solve Problem
+                    </a>
+                  </motion.div>
+                )
+              )}
             </div>
             <div className="section-footer">
               <Link to="/grind75" className="view-all-button">
