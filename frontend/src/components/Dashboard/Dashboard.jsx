@@ -538,7 +538,7 @@ const Dashboard = () => {
         </motion.section>
 
         {/* Recent Activity */}
-        <motion.section className="activity-section block" variants={item}>
+        {/* <motion.section className="activity-section block" variants={item}>
           <h2 className="section-title">
             <FaHistory className="section-icon" />
             Recent Activity
@@ -566,7 +566,7 @@ const Dashboard = () => {
               </motion.div>
             ))}
           </div>
-        </motion.section>
+        </motion.section> */}
       </motion.div>
     </motion.div>
   );

@@ -414,7 +414,7 @@ const Home = () => {
         </motion.div>
       </section>
       {/* Blog Section */}
-      <section className="blog-section">
+      {/* <section className="blog-section">
         <div className="section-header">
           <div className="section-title-icon">
             <FaBlog className="section-icon" />
@@ -453,9 +453,9 @@ const Home = () => {
             View All Blogs →
           </Link>
         </div>
-      </section>
+      </section> */}
       {/* Tech News Section */}
-      <section className="news-section">
+      {/* <section className="news-section">
         <div className="section-header">
           <div className="section-title-icon">
             <FaNewspaper className="section-icon" />
@@ -494,7 +494,7 @@ const Home = () => {
             View All News →
           </Link>
         </div>
-      </section>
+      </section> */}
       {/* Testimonials Section */}
       <section className="testimonials-section">
         <div className="section-header">
