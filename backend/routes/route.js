@@ -83,5 +83,64 @@ router.post("/send", async (req, res) => {
     }
 });
 
+router.post('/toggle-completion', async (req, res) => {
+    try {
+        const { userId, questionId, topic, difficulty, isCompleted } = req.body;
+        
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        // Initialize maps if they don't exist
+        if (!user.completedQuestions) user.completedQuestions = new Map();
+        if (!user.stats.byTopic) user.stats.byTopic = new Map();
+
+        if (isCompleted) {
+            // Add to completed questions
+            if (!user.completedQuestions.has(topic)) {
+                user.completedQuestions.set(topic, []);
+            }
+            user.completedQuestions.get(topic).push(questionId);
+            
+            // Update stats
+            user.stats.totalCompleted += 1;
+            user.stats.byDifficulty[difficulty.toLowerCase()] += 1;
+            user.stats.byTopic.set(topic, (user.stats.byTopic.get(topic) || 0) + 1);
+        } else {
+            // Remove from completed questions
+            if (user.completedQuestions.has(topic)) {
+                const index = user.completedQuestions.get(topic).indexOf(questionId);
+                if (index > -1) {
+                    user.completedQuestions.get(topic).splice(index, 1);
+                    
+                    // Update stats
+                    user.stats.totalCompleted -= 1;
+                    user.stats.byDifficulty[difficulty.toLowerCase()] -= 1;
+                    user.stats.byTopic.set(topic, (user.stats.byTopic.get(topic) || 0) - 1);
+                }
+            }
+        }
+
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Get user stats
+router.get('/stats/:userId', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        res.status(200).json({
+            stats: user.stats,
+            completedQuestions: user.completedQuestions
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 
 module.exports = router;
