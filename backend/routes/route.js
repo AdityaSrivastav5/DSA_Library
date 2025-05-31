@@ -87,8 +87,9 @@ router.post("/send", async (req, res) => {
 router.post('/toggle-completion', async (req, res) => {
     try {
         const { userId, questionId, topic, difficulty, isCompleted } = req.body;
-        
-        const user = await User.find({username : userId});
+        console.log(userId);
+        const user = await User.findOne({username : userId});
+        console.log(user);
         if (!user) return res.status(404).json({ message: 'User not found' });
 
         // Initialize maps if they don't exist
@@ -128,15 +129,21 @@ router.post('/toggle-completion', async (req, res) => {
     }
 });
 
-// Get user stats
+
 router.get('/stats/:userId', async (req, res) => {
     try {
-        const user = await User.findById(req.params.userId);
+        const user = await User.findOne({username: req.params.userId});
         if (!user) return res.status(404).json({ message: 'User not found' });
 
+        // Convert Map to plain object for response
+        const stats = {
+            ...user.stats,
+            byTopic: Object.fromEntries(user.stats.byTopic || {})
+        };
+
         res.status(200).json({
-            stats: user.stats,
-            completedQuestions: user.completedQuestions
+            stats: stats,
+            completedQuestions: Object.fromEntries(user.completedQuestions || {})
         });
     } catch (error) {
         res.status(500).json({ message: error.message });
