@@ -155,7 +155,7 @@ const QuestionTable = () => {
 
     const fetchUserStats = async () => {
         try {
-            const response = await axios.get(`/api/users/stats/${user.id}`);
+            const response = await axios.get(`http://localhost:5003/users/stats/${user.id}`);
             setCompletedQuestions(new Map(Object.entries(response.data.completedQuestions || {})));
         } catch (error) {
             console.error('Error fetching user stats:', error);
@@ -168,7 +168,7 @@ const QuestionTable = () => {
         const isCompleted = !isQuestionCompleted(questionId);
         
         try {
-            await axios.post('/api/users/toggle-completion', {
+            await axios.post('http://localhost:5003/users/toggle-completion', {
                 userId: user.id,
                 questionId,
                 topic: topic.topicName,
