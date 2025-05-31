@@ -289,7 +289,7 @@ const Dashboard = () => {
   const fetchUserStats = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5003/user/stats/${user.id}`
+        `https://dsa-library.onrender.com/user/grind75-questions/user/stats/${user.id}`
       );
       setUserStats(response.data.stats);
       setLoading(false);

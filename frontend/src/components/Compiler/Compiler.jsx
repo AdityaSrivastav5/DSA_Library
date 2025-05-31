@@ -20,7 +20,7 @@ const Compiler = () => {
   const handleRun = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5003/user/execute', {
+      const response = await fetch('https://dsa-library.onrender.com/user/grind75-questions/user/execute', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
