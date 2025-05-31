@@ -7,6 +7,7 @@ const { addClerkUserToDB } = require('../controller/clerkController.js')
 const router = express.Router();
 const Feedback = require('../models/feedbackModel.js')
 const setReminder = require('../controller/setReminder.js')
+const User = require('../models/userModel.js')
 
 const {getAllGrind75Questions} = require('../controller/grind75Controller.js')
 
@@ -87,7 +88,7 @@ router.post('/toggle-completion', async (req, res) => {
     try {
         const { userId, questionId, topic, difficulty, isCompleted } = req.body;
         
-        const user = await User.findById(userId);
+        const user = await User.find({username : userId});
         if (!user) return res.status(404).json({ message: 'User not found' });
 
         // Initialize maps if they don't exist
