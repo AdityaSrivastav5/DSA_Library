@@ -15,10 +15,19 @@ import {
 import { motion } from "framer-motion";
 import "./home.css";
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { FiCode, FiTerminal, FiClock } from "react-icons/fi";
 import { SiCplusplus } from "react-icons/si";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import axios from "axios";
+=======
+import { FiCode, FiTerminal, FiClock } from 'react-icons/fi';
+import { SiCplusplus } from 'react-icons/si';
+import ashuImage from "../../assets/ashu.jpg";
+import rajKumar from "../../assets/rajkumar.jpeg";
+import yash from "../../assets/yash.jpeg";
+
+>>>>>>> aditya
 
 const Home = () => {
   const [grind75Questions, setGrind75Questions] = useState([]);
@@ -64,30 +73,30 @@ const Home = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Rahul Sharma",
-      role: "Software Engineer at Google",
+      name: "Yash Shrivastav",
+      role: "Student at Chandigarh Group of College",
       content:
-        "This platform helped me crack my DSA rounds with ease. The curated problems are exactly what companies ask!",
+        "This platform helped me in my college hackathons. It solved my inconsistency in problem-solving. The curated problems are top-notch!",
       rating: 5,
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+      avatar: yash,
     },
     {
       id: 2,
-      name: "Priya Patel",
-      role: "Frontend Developer",
+      name: "Rajkumar",
+      role: "Student at KCC",
       content:
         "The organized approach to learning DSA made complex topics much more manageable. Highly recommended!",
       rating: 4,
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+      avatar: rajKumar,
     },
     {
       id: 3,
-      name: "Amit Singh",
-      role: "Student at IIT Delhi",
+      name: "Ashutosh Maurya",
+      role: "Software Engineer at Capgemini",
       content:
         "The best resource for interview preparation. Saved me hundreds of hours of searching for quality problems.",
       rating: 5,
-      avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+      avatar: ashuImage,
     },
   ];
 

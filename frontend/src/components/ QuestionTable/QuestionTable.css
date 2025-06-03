@@ -276,3 +276,43 @@
         font-size: 0.8rem;
     }
   }
+
+.completion-status {
+    background: rgba(0, 180, 216, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.completion-checkbox {
+    width: 40px;
+    text-align: center;
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--clr-highlight);
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.checkbox.completed {
+    background: var(--clr-highlight);
+    color: var(--clr-primary);
+}
+
+.checkbox:hover {
+    transform: scale(1.1);
+}
+
+.questions-table th:first-child {
+    width: 60px;
+}
