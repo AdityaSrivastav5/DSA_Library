@@ -15,19 +15,13 @@ import {
 import { motion } from "framer-motion";
 import "./home.css";
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
 import { FiCode, FiTerminal, FiClock } from "react-icons/fi";
 import { SiCplusplus } from "react-icons/si";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import axios from "axios";
-=======
-import { FiCode, FiTerminal, FiClock } from 'react-icons/fi';
-import { SiCplusplus } from 'react-icons/si';
 import ashuImage from "../../assets/ashu.jpg";
 import rajKumar from "../../assets/rajkumar.jpeg";
 import yash from "../../assets/yash.jpeg";
-
->>>>>>> aditya
 
 const Home = () => {
   const [grind75Questions, setGrind75Questions] = useState([]);
